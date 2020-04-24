@@ -1,9 +1,16 @@
 require('./bootstrap');
+require('./adminlte/adminlte');
 
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(faUserSecret)
 
 import Index from './components/pages/index.vue';
 

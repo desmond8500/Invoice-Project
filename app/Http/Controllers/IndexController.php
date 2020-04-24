@@ -10,4 +10,8 @@ class IndexController extends Controller
 
         return view('welcome');
     }
+    public function adminlte(){
+
+        return view('adminlte');
+    }
 }
