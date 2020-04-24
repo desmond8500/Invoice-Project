@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified')->name('home');
 // Route::get('/index', 'IndexController@index')->middleware('verified')->name('index');
-Route::get('/index', 'IndexController@adminlte')->middleware('verified')->name('adminlte');
+Route::get('/', 'IndexController@adminlte')->middleware('verified')->name('adminlte');
