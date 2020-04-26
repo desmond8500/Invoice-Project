@@ -36,7 +36,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a href="{{ url('/')}}" class="btn btn-dark">Acceuil</a>
+    <a href="{{ url('/')}}" class="btn btn-dark mr-2">Acceuil</a>
+    <a href="{{ route('io_generator_builder')}}" class="btn btn-success">Générator</a>
 
     <ul class="nav navbar-nav ml-auto">
         <li class="nav-item d-md-down-none">
