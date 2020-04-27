@@ -3,7 +3,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+          <!-- <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -25,15 +25,15 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          </li> -->
+          <li class="nav-item" v-for="menu in menus" :key="menu.name">
+            <router-link to=''  class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                {{ menu.name }}
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
-            </a>
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -43,6 +43,18 @@
     export default {
         mounted() {
             console.log('Component mounted.')
+        },
+        data(){
+            return {
+                menus: [
+                    { name: 'Comptes', route: 'comptes'},
+                    { name: 'Clients', route: 'comptes'},
+                    { name: 'Projets', route: 'comptes'},
+                    { name: 'Devis', route: 'comptes'},
+                    { name: 'Utilisateurs', route: 'comptes'},
+                    { name: 'Contacts', route: 'comptes'},
+                ]
+            }
         }
     }
 </script>

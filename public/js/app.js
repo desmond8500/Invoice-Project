@@ -2265,6 +2265,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  data: function data() {
+    return {
+      menus: [{
+        name: 'Comptes',
+        route: 'comptes'
+      }, {
+        name: 'Clients',
+        route: 'comptes'
+      }, {
+        name: 'Projets',
+        route: 'comptes'
+      }, {
+        name: 'Devis',
+        route: 'comptes'
+      }, {
+        name: 'Utilisateurs',
+        route: 'comptes'
+      }, {
+        name: 'Contacts',
+        route: 'comptes'
+      }]
+    };
   }
 });
 
@@ -38697,75 +38720,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "mt-2" }, [
-      _c(
-        "ul",
-        {
-          staticClass: "nav nav-pills nav-sidebar flex-column",
-          attrs: {
-            "data-widget": "treeview",
-            role: "menu",
-            "data-accordion": "false"
-          }
-        },
-        [
-          _c("li", { staticClass: "nav-item has-treeview menu-open" }, [
-            _c("a", { staticClass: "nav-link active", attrs: { href: "#" } }, [
-              _c("i", { staticClass: "nav-icon fas fa-tachometer-alt" }),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("\n            Starter Pages\n            "),
-                _c("i", { staticClass: "right fas fa-angle-left" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "nav nav-treeview" }, [
-              _c("li", { staticClass: "nav-item" }, [
-                _c(
-                  "a",
-                  { staticClass: "nav-link active", attrs: { href: "#" } },
-                  [
-                    _c("i", { staticClass: "far fa-circle nav-icon" }),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Active Page")])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "far fa-circle nav-icon" }),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Inactive Page")])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "nav-item" }, [
-            _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+  return _c("nav", { staticClass: "mt-2" }, [
+    _c(
+      "ul",
+      {
+        staticClass: "nav nav-pills nav-sidebar flex-column",
+        attrs: {
+          "data-widget": "treeview",
+          role: "menu",
+          "data-accordion": "false"
+        }
+      },
+      _vm._l(_vm.menus, function(menu) {
+        return _c(
+          "li",
+          { key: menu.name, staticClass: "nav-item" },
+          [
+            _c("router-link", { staticClass: "nav-link", attrs: { to: "" } }, [
               _c("i", { staticClass: "nav-icon fas fa-th" }),
               _vm._v(" "),
               _c("p", [
-                _vm._v("\n            Simple Link\n            "),
-                _c("span", { staticClass: "right badge badge-danger" }, [
-                  _vm._v("New")
-                ])
+                _vm._v("\n            " + _vm._s(menu.name) + "\n            ")
               ])
             ])
-          ])
-        ]
-      )
-    ])
-  }
-]
+          ],
+          1
+        )
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

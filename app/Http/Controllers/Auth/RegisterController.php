@@ -64,10 +64,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if(!isset($data['compte_id'])){
+            $data['compte_id'] = '000';
+        }
+        if(!isset($data['titre'])){
+            $data['titre'] = 'M.';
+        }
+        if(!isset($data['role'])){
+            $data['role'] = 'user';
+        }
+        $inputs = ['prenom','nom','avatar','fonction'];
+        foreach ($inputs as $key => $input) {
+            if(!isset($data[$input])){
+                $data[$input] = null;
+            }
+        }
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'compte_id' => $data['compte_id'],
+            'titre'     => $data['titre'],
+            'prenom'    => $data['prenom'],
+            'nom'       => $data['nom'],
+            'avatar'    => $data['avatar'],
+            'name'      => $data['name'],
+            'fonction'  => $data['fonction'],
+            'role'      => $data['role'],
+            'email'     => $data['email'],
+            'password'  => Hash::make($data['password']),
         ]);
     }
 }
