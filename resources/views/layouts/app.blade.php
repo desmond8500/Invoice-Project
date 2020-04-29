@@ -26,7 +26,7 @@
     <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="{{ url('home')}} ">
+    <a class="navbar-brand" href="{{route('home')}}">
         <img class="navbar-brand-full" src="http://infyom.com/images/logo/blue_logo_150x150.jpg" width="30" height="30"
              alt="InfyOm Logo">
         <img class="navbar-brand-minimized" src="http://infyom.com/images/logo/blue_logo_150x150.jpg" width="30"
@@ -35,9 +35,8 @@
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <a href="{{ url('/')}}" class="btn btn-dark mr-2">Acceuil</a>
-    <a href="{{ route('io_generator_builder')}}" class="btn btn-success">Générator</a>
+    <a href="{{ route('index')}}" class="btn btn-dark mr-2">Index</a>
+    <a href="{{ route('io_generator_builder')}}" class="btn btn-success">GUI Generator</a>
 
     <ul class="nav navbar-nav ml-auto">
         <li class="nav-item d-md-down-none">
@@ -53,25 +52,25 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header text-center">
-                    <strong>Compte</strong>
+                    <strong>Account</strong>
                 </div>
                 <a class="dropdown-item" href="#">
                     <i class="fa fa-envelope-o"></i> Messages
                     <span class="badge badge-success">42</span>
                 </a>
                 <div class="dropdown-header text-center">
-                    <strong>Réglages</strong>
+                    <strong>Settings</strong>
                 </div>
                 <a class="dropdown-item" href="#">
                     <i class="fa fa-user"></i> Profile</a>
                 <a class="dropdown-item" href="#">
-                    <i class="fa fa-wrench"></i> Réglages</a>
+                    <i class="fa fa-wrench"></i> Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url('/')}}">
-                    <i class="fa fa-shield"></i>Interface admin</a>
+                <a class="dropdown-item" href="#">
+                    <i class="fa fa-shield"></i> Lock Account</a>
                 <a href="{{ url('/logout') }}" class="dropdown-item btn btn-default btn-flat"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="fa fa-lock"></i>Déconnexion
+                    <i class="fa fa-lock"></i>Logout
                 </a>
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                     @csrf

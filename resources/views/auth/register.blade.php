@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Inscription</title>
+    <title>Register | CoreUI | InfyOm Laravel Generator</title>
     <meta name="description" content="CoreUI Template - InfyOm Laravel Generator">
     <meta name="keyword" content="CoreUI,Bootstrap,Admin,Template,InfyOm,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
@@ -26,8 +26,8 @@
                 <div class="card-body p-4">
                     <form method="post" action="{{ url('/register') }}">
                         @csrf
-                        <h1>Inscription</h1>
-                        <p class="text-muted">Créer votre compte</p>
+                        <h1>Register</h1>
+                        <p class="text-muted">Create your account</p>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">
@@ -35,7 +35,7 @@
                               </span>
                             </div>
                             <input type="text" class="form-control {{ $errors->has('name')?'is-invalid':'' }}" name="name" value="{{ old('name') }}"
-                                   placeholder="Nom ou Pseudo">
+                                   placeholder="Full Name">
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -80,9 +80,8 @@
                                </span>
                             @endif
                         </div>
-
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Inscription</button>
-                        <a href="{{ url('/login') }}" class="text-center">Je suis déja inscrit</a>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                        <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
                     </form>
                 </div>
             </div>
