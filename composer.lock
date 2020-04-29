@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "637170b44c6ab7545623e073e021b478",
+    "content-hash": "a3fa66d5dd74bb1dd55fa85a3046cc05",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6006,8 +6006,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "infyomlabs/coreui-templates": 20,
-        "infyomlabs/laravel-generator": 20,
-        "infyomlabs/generator-builder": 20
+        "infyomlabs/generator-builder": 20,
+        "infyomlabs/laravel-generator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return redirect()->route('adminlte');
+    // return redirect()->route('adminlte');
+    return view('welcome');
 })->name('index');
 
 Route::get('/adminlte', 'IndexController@adminlte')->middleware('verified')->name('adminlte');
