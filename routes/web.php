@@ -31,3 +31,12 @@ Route::post('generator_builder/generate-from-file','\InfyOm\GeneratorBuilder\Con
 
 
 
+
+
+Route::resource('clients', 'ClientController');
+
+Route::resource('projets', 'ProjetController');
+
+Route::resource('devis', 'DevisController');
+
+Route::resource('contacts', 'ContactController');
