@@ -10,12 +10,16 @@ import Index    from './components/adminlte3/pages/index.vue';
 import Devis    from './components/adminlte3/pages/devis/devis.vue';
 import Projets  from './components/adminlte3/pages/projets/projets.vue';
 import Clients  from './components/adminlte3/pages/clients/clients.vue';
+import Utilisateurs  from './components/adminlte3/pages/users/users.vue';
+import Contacts  from './components/adminlte3/pages/contacts/contacts.vue';
 
 const routes = [
     { path: '/',        component: Index },
     { path: '/index',   component: Index },
     { path: '/devis',   component: Devis },
     { path: '/projets', component: Projets },
+    { path: '/utilisateurs', component: Utilisateurs },
+    { path: '/contacts', component: Contacts },
     { path: '/clients', component: Clients }
 ];
 

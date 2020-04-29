@@ -27,7 +27,7 @@
             </ul>
           </li> -->
           <li class="nav-item" v-for="menu in menus" :key="menu.name">
-            <router-link to=''  class="nav-link">
+            <router-link :to='{ path: menu.route}'  class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 {{ menu.name }}
@@ -47,12 +47,11 @@
         data(){
             return {
                 menus: [
-                    { name: 'Comptes', route: 'comptes'},
-                    { name: 'Clients', route: 'comptes'},
-                    { name: 'Projets', route: 'comptes'},
-                    { name: 'Devis', route: 'comptes'},
-                    { name: 'Utilisateurs', route: 'comptes'},
-                    { name: 'Contacts', route: 'comptes'},
+                    { name: 'Clients', route: 'clients'},
+                    { name: 'Projets', route: 'projets'},
+                    { name: 'Devis', route: 'devis'},
+                    { name: 'Utilisateurs', route: 'utilisateurs'},
+                    { name: 'Contacts', route: 'contacts'}
                 ]
             }
         }

@@ -13,7 +13,6 @@
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
-csd
   <adminlte-nav></adminlte-nav>
 
   <!-- Main Sidebar Container -->
