@@ -13,10 +13,10 @@
 
 Route::get('/', function () {
     // return redirect()->route('adminlte');
-    return view('welcome');
+    return view('adminlte');
 })->name('index');
 
-Route::get('/adminlte', 'IndexController@adminlte')->middleware('verified')->name('adminlte');
+Route::get('/index', 'IndexController@adminlte')->name('adminlte');
 
 Auth::routes(['verify' => true]);
 
