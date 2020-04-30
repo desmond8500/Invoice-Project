@@ -5,16 +5,29 @@
     <div class="content">
       <div class="container-fluid">
         <!-- =============================================================== -->
-
-        <div>
-            <h1>Bienvenue</h1>
-            <ul>
-                <li v-for="user in users.data" :key="user.id">
-                    {{ user.name }}
-                </li>
-            </ul>
-            <pagination :data="users" @pagination-change-page="getResults"></pagination>
-        </div>
+        <table class="table mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Email</th>
+                    <!-- <th scope="col">Adresse</th> -->
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="user in users.data" :key="user.id">
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <!-- <td>{{ user.adresse }}</td> -->
+                    <td>
+                        <!-- <client-edit style="float:left" class="mr-2" :client="client"></client-edit>
+                        <client-delete></client-delete> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
 
         <!-- =============================================================== -->

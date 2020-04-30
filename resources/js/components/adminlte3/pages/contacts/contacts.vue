@@ -21,7 +21,33 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+          <contact-add @task-added="refresh"></contact-add>
 
+          <table class="table mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="contact in contacts.data" :key="contact.id">
+                    <th scope="row">{{ contact.id }}</th>
+                    <td>{{ contact.prenom }}</td>
+                    <td>{{ contact.nom }}</td>
+                    <td>{{ contact.tel }}</td>
+                    <td>{{ contact.mail }}</td>
+                    <td>
+                        <!-- <contact-edit style="float:left" class="mr-2" :contact="contact"></contact-edit>
+                        <contact-delete></contact-delete> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -30,8 +56,34 @@
 
 <script>
     export default {
+        data(){
+            return {
+                contacts: {}
+            }
+        },
+        created(){
+            axios.get('http://localhost:8000/api/contacts')
+                .then(response => {
+                    this.contacts = response.data;
+                    console.log(response.data);
+                    })
+                .catch(error => console.log(error)
+                );
+        },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.');
+            this.getResults();
+        },
+        methods: {
+            getResults(page = 1) {
+                axios.get('http://localhost:8000/api/contacts?page=' + page)
+                    .then(response => {
+                        this.contacts = response.data;
+                    });
+            },
+            refresh(contacts){
+                this.getResults();
+            }
         }
     }
 </script>

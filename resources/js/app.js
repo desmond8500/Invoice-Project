@@ -48,6 +48,9 @@ Vue.component('client-delete', require('./components/adminlte3/pages/clients/del
 Vue.component('projet-add', require('./components/adminlte3/pages/projets/add.vue').default);
 // Devis
 Vue.component('devis-add', require('./components/adminlte3/pages/devis/add.vue').default);
+// Contact
+Vue.component('contact-add', require('./components/adminlte3/pages/contacts/add.vue').default);
+// User
 
 const router = new VueRouter({ routes });
 

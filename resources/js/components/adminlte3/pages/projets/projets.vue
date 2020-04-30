@@ -39,7 +39,7 @@
                     <td>{{ projet.nom }}</td>
                     <td>{{ projet.description }}</td>
                     <td>{{ projet.categorie }}</td>
-                    <td>{{ projet.categorie }}</td>
+                    <td>{{ projet.staut }}</td>
                     <td>
                         <!-- <projet-edit style="float:left" class="mr-2" :projet="projet"></projet-edit>
                         <projet-delete></projet-delete> -->
