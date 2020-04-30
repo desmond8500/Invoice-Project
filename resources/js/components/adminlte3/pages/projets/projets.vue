@@ -22,6 +22,31 @@
     <div class="content">
       <div class="container-fluid">
           <projet-add></projet-add>
+          <table class="table mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Categorie</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="projet in projets.data" :key="projet.id">
+                    <th scope="row">{{ projet.id }}</th>
+                    <td>{{ projet.nom }}</td>
+                    <td>{{ projet.description }}</td>
+                    <td>{{ projet.categorie }}</td>
+                    <td>{{ projet.categorie }}</td>
+                    <td>
+                        <!-- <projet-edit style="float:left" class="mr-2" :projet="projet"></projet-edit>
+                        <projet-delete></projet-delete> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -30,8 +55,22 @@
 
 <script>
     export default {
+        created(){
+                axios.get('http://localhost:8000/api/projets')
+                .then(response => {
+                    this.projets = response.data;
+                    console.log(response.data);
+                    })
+                .catch(error => console.log(error)
+                );
+        },
         mounted() {
             console.log('Component mounted.')
+        },
+         data(){
+            return {
+                projets: {},
+            }
         }
     }
 </script>

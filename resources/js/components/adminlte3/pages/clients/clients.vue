@@ -45,12 +45,8 @@
                     <td>{{ client.description }}</td>
                     <td>{{ client.adresse }}</td>
                     <td>
-                        <button class="btn btn-primary">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </button>
+                        <client-edit style="float:left" class="mr-2" :client="client"></client-edit>
+                        <client-delete></client-delete>
                     </td>
                 </tr>
             </tbody>

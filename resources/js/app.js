@@ -41,9 +41,13 @@ Vue.component('adminlte-footer',            require('./components/adminlte3/inde
 Vue.component('adminlte-bread',require('./components/adminlte3/component/bread.vue').default);
 
 // Clients
-Vue.component('client-add', require('./components/adminlte3/pages/clients/ajout.vue').default);
+Vue.component('client-add', require('./components/adminlte3/pages/clients/add.vue').default);
+Vue.component('client-edit', require('./components/adminlte3/pages/clients/edit.vue').default);
+Vue.component('client-delete', require('./components/adminlte3/pages/clients/delete.vue').default);
 // projets
-Vue.component('projet-add', require('./components/adminlte3/pages/projets/ajout.vue').default);
+Vue.component('projet-add', require('./components/adminlte3/pages/projets/add.vue').default);
+// Devis
+Vue.component('devis-add', require('./components/adminlte3/pages/devis/add.vue').default);
 
 const router = new VueRouter({ routes });
 
