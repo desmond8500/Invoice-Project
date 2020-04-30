@@ -30,3 +30,4 @@ Route::resource('projets', 'ProjetAPIController');
 Route::resource('devis', 'DevisAPIController');
 
 Route::resource('contacts', 'ContactAPIController');
+Route::resource('users', 'UserAPIController');

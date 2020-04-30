@@ -58,6 +58,8 @@ class ClientAPIController extends AppBaseController
         $client = $this->clientRepository->create($input);
 
         return $this->sendResponse($client->toArray(), 'Client saved successfully');
+
+
     }
 
     /**
