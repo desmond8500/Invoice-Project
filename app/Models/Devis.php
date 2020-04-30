@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Devis
  * @package App\Models
- * @version April 29, 2020, 8:39 pm UTC
+ * @version April 30, 2020, 1:25 pm UTC
  *
  * @property string $projet_id
  * @property string $reference
+ * @property string $description
  * @property string $statut
  * @property string $body
  */
@@ -29,6 +30,7 @@ class Devis extends Model
     public $fillable = [
         'projet_id',
         'reference',
+        'description',
         'statut',
         'body'
     ];
@@ -42,6 +44,7 @@ class Devis extends Model
         'id' => 'integer',
         'projet_id' => 'string',
         'reference' => 'string',
+        'description' => 'string',
         'statut' => 'string',
         'body' => 'string'
     ];

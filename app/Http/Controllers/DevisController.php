@@ -29,7 +29,7 @@ class DevisController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $devis = $this->devisRepository->paginate(10);
+        $devis = $this->devisRepository->all();
 
         return view('devis.index')
             ->with('devis', $devis);

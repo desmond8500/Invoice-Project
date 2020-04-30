@@ -16,6 +16,12 @@
     <p>{{ $devis->reference }}</p>
 </div>
 
+<!-- Description Field -->
+<div class="form-group">
+    {!! Form::label('description', 'Description:') !!}
+    <p>{{ $devis->description }}</p>
+</div>
+
 <!-- Statut Field -->
 <div class="form-group">
     {!! Form::label('statut', 'Statut:') !!}

@@ -37,6 +37,8 @@ Route::resource('clients', 'ClientController');
 
 Route::resource('projets', 'ProjetController');
 
-Route::resource('devis', 'DevisController');
+
 
 Route::resource('contacts', 'ContactController');
+
+Route::resource('devis', 'DevisController');

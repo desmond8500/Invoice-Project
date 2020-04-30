@@ -19,8 +19,6 @@
                              @include('devis.table')
                               <div class="pull-right mr-3">
                                      
-        @include('coreui-templates::common.paginate', ['records' => $devis])
-
                               </div>
                          </div>
                      </div>

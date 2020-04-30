@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class DevisRepository
  * @package App\Repositories
- * @version April 29, 2020, 8:39 pm UTC
+ * @version April 30, 2020, 1:25 pm UTC
 */
 
 class DevisRepository extends BaseRepository
@@ -19,6 +19,7 @@ class DevisRepository extends BaseRepository
     protected $fieldSearchable = [
         'projet_id',
         'reference',
+        'description',
         'statut',
         'body'
     ];

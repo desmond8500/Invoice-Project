@@ -17,6 +17,7 @@ class CreateDevisTable extends Migration
             $table->increments('id');
             $table->string('projet_id');
             $table->string('reference');
+            $table->string('description');
             $table->string('statut');
             $table->string('body');
             $table->timestamps();

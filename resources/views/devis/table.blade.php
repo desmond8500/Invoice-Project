@@ -4,6 +4,7 @@
             <tr>
                 <th>Projet Id</th>
         <th>Reference</th>
+        <th>Description</th>
         <th>Statut</th>
         <th>Body</th>
                 <th colspan="3">Action</th>
@@ -14,6 +15,7 @@
             <tr>
                 <td>{{ $devis->projet_id }}</td>
             <td>{{ $devis->reference }}</td>
+            <td>{{ $devis->description }}</td>
             <td>{{ $devis->statut }}</td>
             <td>{{ $devis->body }}</td>
                 <td>
