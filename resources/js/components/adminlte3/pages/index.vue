@@ -21,7 +21,31 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+          <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Informations</h4>
+            <p>
+                La mise à jour des modèles est en cours
+            </p>
+          </div>
 
+
+        <h3>Routes</h3>
+        <table class="table mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">route</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="route in routes" :key="route.id">
+                    <th scope="row">{{ route.id }}</th>
+                    <td>{{ route.name }}</td>
+                    <td>{{ route.route }}</td>
+                </tr>
+            </tbody>
+        </table>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -36,7 +60,13 @@
 
         data(){
             return {
-                message: "hello"
+                message: "hello",
+                routes: [
+                    { id: 1, name: "Clients", route: "/api/clients"},
+                    { id: 2, name: "Projets", route: "/api/projets"},
+                    { id: 3, name: "Devis", route: "/api/devis"},
+                    { id: 4, name: "Contacts", route: "/api/contacts"},
+                ]
             }
         }
     }

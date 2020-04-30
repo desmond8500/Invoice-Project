@@ -2494,6 +2494,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2664,13 +2687,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
   },
   data: function data() {
     return {
-      message: "hello"
+      message: "hello",
+      routes: [{
+        id: 1,
+        name: "Clients",
+        route: "/api/clients"
+      }, {
+        id: 2,
+        name: "Projets",
+        route: "/api/projets"
+      }, {
+        id: 3,
+        name: "Devis",
+        route: "/api/devis"
+      }, {
+        id: 4,
+        name: "Contacts",
+        route: "/api/contacts"
+      }]
     };
   }
 });
@@ -40080,20 +40144,28 @@ var render = function() {
         "div",
         { staticClass: "container-fluid" },
         [
+          _vm._m(1),
+          _vm._v(" "),
           _c("client-add", { on: { "task-added": _vm.refresh } }),
           _vm._v(" "),
-          _c("div", [
-            _c("h1", [_vm._v("Bienvenue")]),
+          _c("table", { staticClass: "table mt-2" }, [
+            _vm._m(2),
             _vm._v(" "),
             _c(
-              "ul",
+              "tbody",
               _vm._l(_vm.clients.data, function(client) {
-                return _c("li", { key: client.id }, [
-                  _vm._v(
-                    "\n                  " +
-                      _vm._s(client.nom) +
-                      "\n              "
-                  )
+                return _c("tr", { key: client.id }, [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(client.id))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(client.nom))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(client.description))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(client.adresse))]),
+                  _vm._v(" "),
+                  _vm._m(3, true)
                 ])
               }),
               0
@@ -40129,6 +40201,56 @@ var staticRenderFns = [
             ])
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "alert alert-success", attrs: { role: "alert" } },
+      [
+        _c("h4", { staticClass: "alert-heading" }, [_vm._v("Informations")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Les boutons d'édition et de suppression ne sont pas encore fonctionnels"
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nom")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Adresse")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Actions")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", { staticClass: "btn btn-primary" }, [
+        _c("i", { staticClass: "fa fa-edit" })
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-danger" }, [
+        _c("i", { staticClass: "fa fa-trash" })
       ])
     ])
   }
@@ -40268,38 +40390,94 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Routes")]),
+        _vm._v(" "),
+        _c("table", { staticClass: "table mt-2" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.routes, function(route) {
+              return _c("tr", { key: route.id }, [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(route.id))
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(route.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(route.route))])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-wrapper" }, [
-      _c("div", { staticClass: "content-header" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _c("div", { staticClass: "row mb-2" }, [
-            _c("div", { staticClass: "col-sm-6" }, [
-              _c("h1", { staticClass: "m-0 text-dark" }, [_vm._v("Dashboard")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-6" }, [
-              _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
-                _c("li", { staticClass: "breadcrumb-item" }, [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "breadcrumb-item active" }, [
-                  _vm._v("Starter Page")
-                ])
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "m-0 text-dark" }, [_vm._v("Dashboard")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("li", { staticClass: "breadcrumb-item" }, [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "breadcrumb-item active" }, [
+                _vm._v("Starter Page")
               ])
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _c("div", { staticClass: "container-fluid" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "alert alert-success", attrs: { role: "alert" } },
+      [
+        _c("h4", { staticClass: "alert-heading" }, [_vm._v("Informations")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n              La mise à jour des modèles est en cours\n          "
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nom")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("route")])
       ])
     ])
   }

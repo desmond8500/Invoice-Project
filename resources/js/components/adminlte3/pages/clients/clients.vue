@@ -21,17 +21,40 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-          <client-add @task-added="refresh"></client-add>
-
-           <div>
-            <h1>Bienvenue</h1>
-            <ul>
-                <li v-for="client in clients.data" :key="client.id">
-                    {{ client.nom }}
-                </li>
-            </ul>
-            <!-- <pagination :data="clients" @pagination-change-page="getResults"></pagination> -->
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Informations</h4>
+          <p>Les boutons d'édition et de suppression ne sont pas encore fonctionnels</p>
         </div>
+
+        <client-add @task-added="refresh"></client-add>
+
+        <table class="table mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="client in clients.data" :key="client.id">
+                    <th scope="row">{{ client.id }}</th>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.description }}</td>
+                    <td>{{ client.adresse }}</td>
+                    <td>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
       </div><!-- /.container-fluid -->
     </div>
