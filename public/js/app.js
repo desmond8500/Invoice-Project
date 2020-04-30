@@ -2415,7 +2415,9 @@ __webpack_require__.r(__webpack_exports__);
       nom: '',
       description: '',
       adresse: '',
-      dismiss: true
+      dismiss: true,
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   mounted: function mounted() {
@@ -2425,7 +2427,7 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
-      axios.post('http://localhost:8000/api/clients', {
+      axios.post(this.serverlink + '/api/clients', {
         compte_id: this.compte_id,
         nom: this.nom,
         description: this.description,
@@ -2516,13 +2518,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      clients: {}
+      clients: {},
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/clients').then(function (response) {
+    axios.get(this.serverlink + '/api/clients').then(function (response) {
       _this.clients = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -2538,7 +2542,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('http://localhost:8000/api/clients?page=' + page).then(function (response) {
+      axios.get(this.serverlink + '/api/clients?page=' + page).then(function (response) {
         _this2.clients = response.data;
       });
     },
@@ -2598,7 +2602,9 @@ __webpack_require__.r(__webpack_exports__);
       nom: '',
       description: '',
       adresse: '',
-      dismiss: true
+      dismiss: true,
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   mounted: function mounted() {
@@ -2608,7 +2614,7 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
-      axios.post('http://localhost:8000/api/clients', {
+      axios.post(this.serverlink + '/api/clients', {
         compte_id: this.compte_id,
         nom: this.nom,
         description: this.description,
@@ -2688,7 +2694,9 @@ __webpack_require__.r(__webpack_exports__);
       nom: '',
       description: '',
       adresse: '',
-      dismiss: true
+      dismiss: true,
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   mounted: function mounted() {
@@ -2707,7 +2715,7 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
-      axios.post('http://localhost:8000/api/clients/' + this.client.id, {
+      axios.post(this.serverlink + '/api/clients/' + this.client.id, {
         compte_id: this.client.compte_id,
         nom: this.client.nom,
         description: this.client.description,
@@ -2807,7 +2815,9 @@ __webpack_require__.r(__webpack_exports__);
         fonction: '',
         description: ''
       },
-      dismiss: true
+      dismiss: true,
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   mounted: function mounted() {
@@ -2816,7 +2826,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/projets').then(function (response) {
+    axios.get(this.serverlink + '/api/projets').then(function (response) {
       _this.projets = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -2825,7 +2835,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
-      axios.post('http://localhost:8000/api/contact', {
+      axios.post(this.serverlink + '/api/contact', {
         projet_id: this.contact.projet_id,
         reference: this.contact.reference,
         description: this.contact.description,
@@ -2911,13 +2921,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      contacts: {}
+      contacts: {},
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/contacts').then(function (response) {
+    axios.get(this.serverlink + '/api/contacts').then(function (response) {
       _this.contacts = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -2933,7 +2945,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('http://localhost:8000/api/contacts?page=' + page).then(function (response) {
+      axios.get(this.serverlink + '/api/contacts?page=' + page).then(function (response) {
         _this2.contacts = response.data;
       });
     },
@@ -3024,7 +3036,9 @@ __webpack_require__.r(__webpack_exports__);
         body: '0',
         description: ''
       },
-      dismiss: true
+      dismiss: true,
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   mounted: function mounted() {
@@ -3033,7 +3047,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/projets').then(function (response) {
+    axios.get(this.serverlink + '/api/projets').then(function (response) {
       _this.projets = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -3042,7 +3056,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
-      axios.post('http://localhost:8000/api/devis', {
+      axios.post(this.serverlink + '/api/devis', {
         projet_id: this.devis.projet_id,
         reference: this.devis.reference,
         description: this.devis.description,
@@ -3127,7 +3141,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/devis').then(function (response) {
+    axios.get(this.serverlink + '/api/devis').then(function (response) {
       _this.deviss = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -3139,7 +3153,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      deviss: {}
+      deviss: {},
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   }
 });
@@ -3232,7 +3248,9 @@ __webpack_require__.r(__webpack_exports__);
         id: 4,
         name: "Contacts",
         route: "/api/contacts"
-      }]
+      }],
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   }
 });
@@ -3318,7 +3336,9 @@ __webpack_require__.r(__webpack_exports__);
         categorie: '',
         statut: ''
       },
-      dismiss: true
+      dismiss: true,
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   mounted: function mounted() {
@@ -3327,7 +3347,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/clients').then(function (response) {
+    axios.get(this.serverlink + '/api/clients').then(function (response) {
       _this.clients = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -3336,7 +3356,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
-      axios.post('http://localhost:8000/api/projets', {
+      axios.post(this.serverlink + '/api/projets', {
         client_id: this.projet.client_id,
         nom: this.projet.nom,
         description: this.projet.description,
@@ -3423,7 +3443,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/projets').then(function (response) {
+    axios.get(this.serverlink + '/api/projets').then(function (response) {
       _this.projets = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -3435,7 +3455,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      projets: {}
+      projets: {},
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   }
 });
@@ -3492,13 +3514,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: {}
+      users: {},
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/users').then(function (response) {
+    axios.get(this.serverlink + '/api/users').then(function (response) {
       _this.users = response.data;
       console.log(response.data);
     })["catch"](function (error) {
@@ -3514,7 +3538,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('http://localhost:8000/api/users?page=' + page).then(function (response) {
+      axios.get(this.serverlink + '/api/users?page=' + page).then(function (response) {
         _this2.users = response.data;
       });
     }

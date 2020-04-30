@@ -71,14 +71,16 @@
                     fonction: '',
                     description: ''
                 },
-                dismiss: true
+                dismiss: true,
+                locallink: 'http://localhost:8000',
+                serverlink: 'http://invoicing.yonkou.info'
             }
         },
         mounted() {
             console.log('Component mounted.');
         },
         created(){
-                axios.get('http://localhost:8000/api/projets')
+                axios.get(this.serverlink+'/api/projets')
                 .then(response => {
                     this.projets = response.data;
                     console.log(response.data);
@@ -89,7 +91,7 @@
         methods: {
 
             store(){
-                axios.post('http://localhost:8000/api/contact',{
+                axios.post(this.serverlink+'/api/contact',{
                     projet_id:      this.contact.projet_id,
                     reference:      this.contact.reference,
                     description:    this.contact.description,

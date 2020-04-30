@@ -66,7 +66,9 @@
                     { id: 2, name: "Projets", route: "/api/projets"},
                     { id: 3, name: "Devis", route: "/api/devis"},
                     { id: 4, name: "Contacts", route: "/api/contacts"},
-                ]
+                ],
+                locallink: 'http://localhost:8000',
+                serverlink: 'http://invoicing.yonkou.info'
             }
         }
     }

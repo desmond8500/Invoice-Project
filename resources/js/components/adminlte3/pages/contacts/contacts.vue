@@ -58,11 +58,13 @@
     export default {
         data(){
             return {
-                contacts: {}
+                contacts: {},
+                locallink: 'http://localhost:8000',
+                serverlink: 'http://invoicing.yonkou.info'
             }
         },
         created(){
-            axios.get('http://localhost:8000/api/contacts')
+            axios.get(this.serverlink+'/api/contacts')
                 .then(response => {
                     this.contacts = response.data;
                     console.log(response.data);
@@ -76,7 +78,7 @@
         },
         methods: {
             getResults(page = 1) {
-                axios.get('http://localhost:8000/api/contacts?page=' + page)
+                axios.get(this.serverlink+'/api/contacts?page=' + page)
                     .then(response => {
                         this.contacts = response.data;
                     });

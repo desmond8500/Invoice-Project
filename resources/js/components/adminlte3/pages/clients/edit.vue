@@ -51,7 +51,9 @@
                 nom:'',
                 description:'',
                 adresse:'',
-                dismiss: true
+                dismiss: true,
+                locallink: 'http://localhost:8000',
+                serverlink: 'http://invoicing.yonkou.info'
             }
         },
         mounted() {
@@ -68,7 +70,7 @@
         },
         methods: {
             store(){
-                axios.post('http://localhost:8000/api/clients/'+ this.client.id,{
+                axios.post(this.serverlink+'/api/clients/'+ this.client.id,{
                     compte_id:      this.client.compte_id,
                     nom:            this.client.nom,
                     description:    this.client.description,

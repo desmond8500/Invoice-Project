@@ -55,7 +55,7 @@
 <script>
     export default {
         created(){
-                axios.get('http://localhost:8000/api/devis')
+                axios.get(this.serverlink+'/api/devis')
                 .then(response => {
                     this.deviss = response.data;
                     console.log(response.data);
@@ -69,6 +69,8 @@
          data(){
             return {
                 deviss: {},
+                locallink: 'http://localhost:8000',
+                serverlink: 'http://invoicing.yonkou.info'
             }
         }
     }

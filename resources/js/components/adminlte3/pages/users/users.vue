@@ -40,11 +40,13 @@
     export default {
         data(){
             return {
-                users: {}
+                users: {},
+                locallink: 'http://localhost:8000',
+                serverlink: 'http://invoicing.yonkou.info'
             }
         },
         created(){
-            axios.get('http://localhost:8000/api/users')
+            axios.get(this.serverlink+'/api/users')
                 .then(response => {
                     this.users = response.data;
                     console.log(response.data);
@@ -58,7 +60,7 @@
         },
         methods: {
             getResults(page = 1) {
-                axios.get('http://localhost:8000/api/users?page=' + page)
+                axios.get(this.serverlink+'/api/users?page=' + page)
                     .then(response => {
                         this.users = response.data;
                     });

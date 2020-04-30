@@ -56,7 +56,7 @@
 <script>
     export default {
         created(){
-                axios.get('http://localhost:8000/api/projets')
+                axios.get(this.serverlink+'/api/projets')
                 .then(response => {
                     this.projets = response.data;
                     console.log(response.data);
@@ -70,6 +70,8 @@
          data(){
             return {
                 projets: {},
+                locallink: 'http://localhost:8000',
+                serverlink: 'http://invoicing.yonkou.info'
             }
         }
     }
