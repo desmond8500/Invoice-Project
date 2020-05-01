@@ -46,7 +46,10 @@
                     <td>{{ client.adresse }}</td>
                     <td>
                         <client-edit style="float:left" class="mr-2" :client="client"></client-edit>
-                        <client-delete></client-delete>
+                        <!-- <client-delete :id="client.id" @task-added="refresh"></client-delete> -->
+                        <button class="btn btn-danger" @click="del(client.id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>
@@ -60,6 +63,10 @@
 
 <script>
     export default {
+        mounted() {
+            console.log('Component mounted.');
+            this.getResults();
+        },
         data(){
             return {
                 clients: {},
@@ -76,10 +83,6 @@
                 .catch(error => console.log(error)
                 );
         },
-        mounted() {
-            console.log('Component mounted.');
-            this.getResults();
-        },
         methods: {
             getResults(page = 1) {
                 axios.get(this.serverlink+'/api/clients?page=' + page)
@@ -88,6 +91,15 @@
                     });
             },
             refresh(clients){
+                this.getResults();
+            },
+            del(id){
+                axios.delete(this.serverlink+'/api/clients/'+id)
+                .then(response => {
+                        this.clients = response.data;
+                    })
+                .then(response => this.$emit('task-added',response))
+                .catch(error => console.log(error));
                 this.getResults();
             }
         }

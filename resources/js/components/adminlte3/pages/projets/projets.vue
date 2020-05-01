@@ -21,7 +21,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-          <projet-add></projet-add>
+          <projet-add @task-added="refresh"></projet-add>
           <table class="table mt-2">
             <thead class="thead-dark">
                 <tr>
@@ -55,23 +55,34 @@
 
 <script>
     export default {
-        created(){
-                axios.get(this.serverlink+'/api/projets')
-                .then(response => {
-                    this.projets = response.data;
-                    console.log(response.data);
-                    })
-                .catch(error => console.log(error)
-                );
-        },
         mounted() {
             console.log('Component mounted.')
         },
-         data(){
+        data(){
             return {
                 projets: {},
                 locallink: 'http://localhost:8000',
                 serverlink: 'http://invoicing.yonkou.info'
+            }
+        },
+        created(){
+            axios.get(this.serverlink+'/api/projets')
+            .then(response => {
+                this.projets = response.data;
+                console.log(response.data);
+                })
+            .catch(error => console.log(error)
+            );
+        },
+        methods: {
+            getResults(page = 1) {
+                axios.get(this.serverlink+'/api/projets?page=' + page)
+                    .then(response => {
+                        this.projets = response.data;
+                    });
+            },
+            refresh(projets){
+                this.getResults();
             }
         }
     }

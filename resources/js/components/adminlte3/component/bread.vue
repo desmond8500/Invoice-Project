@@ -21,7 +21,6 @@
 
         mounted() {
             console.log('Component mounted.');
-            this.getResults();
         }
     }
 </script>

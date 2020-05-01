@@ -98,6 +98,7 @@
                     statut:         this.projet.statut,
                 })
                 .then(response => console.log(response))
+                .then(response => this.$emit('task-added',response))
                 .catch(error => console.log(error));
                 this.dismiss = false;
             },

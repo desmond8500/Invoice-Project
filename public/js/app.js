@@ -1929,7 +1929,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.getResults();
   }
 });
 
@@ -2515,7 +2514,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    this.getResults();
+  },
   data: function data() {
     return {
       clients: {},
@@ -2533,10 +2539,6 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-    this.getResults();
-  },
   methods: {
     getResults: function getResults() {
       var _this2 = this;
@@ -2547,6 +2549,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     refresh: function refresh(clients) {
+      this.getResults();
+    },
+    del: function del(id) {
+      var _this3 = this;
+
+      axios["delete"](this.serverlink + '/api/clients/' + id).then(function (response) {
+        _this3.clients = response.data;
+      }).then(function (response) {
+        return _this3.$emit('task-added', response);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
       this.getResults();
     }
   }
@@ -2611,16 +2625,11 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.');
   },
   methods: {
-    store: function store() {
+    del: function del(id) {
       var _this = this;
 
-      axios.post(this.serverlink + '/api/clients', {
-        compte_id: this.compte_id,
-        nom: this.nom,
-        description: this.description,
-        adresse: this.adresse
-      }).then(function (response) {
-        return console.log(response);
+      axios["delete"](this.serverlink + '/api/clients/' + id).then(function (response) {
+        _this.clients = response.data;
       }).then(function (response) {
         return _this.$emit('task-added', response);
       })["catch"](function (error) {
@@ -2628,7 +2637,8 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.dismiss = false;
     }
-  }
+  },
+  props: ['id']
 });
 
 /***/ }),
@@ -2802,10 +2812,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      projets: {},
+      clients: {},
       contact: {
         client_id: '',
         prenom: '',
@@ -2826,8 +2837,8 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get(this.serverlink + '/api/projets').then(function (response) {
-      _this.projets = response.data;
+    axios.get(this.serverlink + '/api/clients').then(function (response) {
+      _this.clients = response.data;
       console.log(response.data);
     })["catch"](function (error) {
       return console.log(error);
@@ -2835,12 +2846,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
-      axios.post(this.serverlink + '/api/contact', {
-        projet_id: this.contact.projet_id,
-        reference: this.contact.reference,
-        description: this.contact.description,
-        statut: this.contact.statut,
-        body: '0'
+      var _this2 = this;
+
+      axios.post(this.serverlink + '/api/contacts', {
+        client_id: this.contact.client_id,
+        prenom: this.contact.prenom,
+        nom: this.contact.nom,
+        tel: this.contact.tel,
+        email: this.contact.email,
+        "function": this.contact["function"],
+        description: this.contact.description
+      }).then(function (response) {
+        return _this2.$emit('task-added', response);
       }).then(function (response) {
         return console.log(response);
       })["catch"](function (error) {
@@ -3056,6 +3073,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
+      var _this2 = this;
+
       axios.post(this.serverlink + '/api/devis', {
         projet_id: this.devis.projet_id,
         reference: this.devis.reference,
@@ -3064,6 +3083,8 @@ __webpack_require__.r(__webpack_exports__);
         body: '0'
       }).then(function (response) {
         return console.log(response);
+      }).then(function (response) {
+        return _this2.$emit('task-added', response);
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -3138,6 +3159,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  data: function data() {
+    return {
+      deviss: {},
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
+    };
+  },
   created: function created() {
     var _this = this;
 
@@ -3148,15 +3179,18 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
-  data: function data() {
-    return {
-      deviss: {},
-      locallink: 'http://localhost:8000',
-      serverlink: 'http://invoicing.yonkou.info'
-    };
+  methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get(this.serverlink + '/api/devis?page=' + page).then(function (response) {
+        _this2.deviss = response.data;
+      });
+    },
+    refresh: function refresh(deviss) {
+      this.getResults();
+    }
   }
 });
 
@@ -3356,6 +3390,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
+      var _this2 = this;
+
       axios.post(this.serverlink + '/api/projets', {
         client_id: this.projet.client_id,
         nom: this.projet.nom,
@@ -3365,6 +3401,8 @@ __webpack_require__.r(__webpack_exports__);
         statut: this.projet.statut
       }).then(function (response) {
         return console.log(response);
+      }).then(function (response) {
+        return _this2.$emit('task-added', response);
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -3440,6 +3478,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  data: function data() {
+    return {
+      projets: {},
+      locallink: 'http://localhost:8000',
+      serverlink: 'http://invoicing.yonkou.info'
+    };
+  },
   created: function created() {
     var _this = this;
 
@@ -3450,15 +3498,18 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
-  data: function data() {
-    return {
-      projets: {},
-      locallink: 'http://localhost:8000',
-      serverlink: 'http://invoicing.yonkou.info'
-    };
+  methods: {
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get(this.serverlink + '/api/projets?page=' + page).then(function (response) {
+        _this2.projets = response.data;
+      });
+    },
+    refresh: function refresh(projets) {
+      this.getResults();
+    }
   }
 });
 
@@ -3512,6 +3563,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
   data: function data() {
     return {
       users: {},
@@ -3529,10 +3583,6 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-    this.getResults();
-  },
   methods: {
     getResults: function getResults() {
       var _this2 = this;
@@ -3541,6 +3591,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.serverlink + '/api/users?page=' + page).then(function (response) {
         _this2.users = response.data;
       });
+    },
+    refresh: function refresh(users) {
+      this.getResults();
     }
   }
 });
@@ -40763,7 +40816,18 @@ var render = function() {
                         attrs: { client: client }
                       }),
                       _vm._v(" "),
-                      _c("client-delete")
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.del(client.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-trash" })]
+                      )
                     ],
                     1
                   )
@@ -40884,7 +40948,22 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "deleteProjectLabel" }
+                  },
+                  [
+                    _vm._v(
+                      "Supprimmer un projet un Projet " + _vm._s(_vm.id) + " "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
               _vm._v(" "),
               _vm._m(2),
               _vm._v(" "),
@@ -40903,8 +40982,12 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
-                        attrs: { type: "button" },
-                        on: { click: _vm.store }
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.del(_vm.id)
+                          }
+                        }
                       },
                       [_vm._v("Valider")]
                     )
@@ -40939,26 +41022,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "deleteProjectLabel" } },
-        [_vm._v("Supprimmer un projet un Projet")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this
@@ -41275,8 +41350,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.contact.projet_id,
-                            expression: "contact.projet_id"
+                            value: _vm.contact.client_id,
+                            expression: "contact.client_id"
                           }
                         ],
                         staticClass: "form-control",
@@ -41292,7 +41367,7 @@ var render = function() {
                               })
                             _vm.$set(
                               _vm.contact,
-                              "projet_id",
+                              "client_id",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
@@ -41310,133 +41385,133 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-6" }, [
-                    _c("label", { attrs: { for: "" } }, [_vm._v("Référence")]),
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Prénom")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.contact.reference,
-                          expression: "contact.reference"
+                          value: _vm.contact.prenom,
+                          expression: "contact.prenom"
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "nom", id: "nom" },
-                      domProps: { value: _vm.contact.reference },
+                      attrs: { type: "text", name: "prenom", id: "prenom" },
+                      domProps: { value: _vm.contact.prenom },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(
-                            _vm.contact,
-                            "reference",
-                            $event.target.value
-                          )
+                          _vm.$set(_vm.contact, "prenom", $event.target.value)
                         }
                       }
                     })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-6" }, [
-                    _c("label", { attrs: { for: "" } }, [_vm._v("Status")]),
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Nom")]),
                     _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.contact.statut,
-                            expression: "contact.statut"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { id: "" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.contact,
-                              "statut",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.contact.nom,
+                          expression: "contact.nom"
                         }
-                      },
-                      [
-                        _c("option", { attrs: { value: "Nouveau" } }, [
-                          _vm._v("Nouveau")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "En cours" } }, [
-                          _vm._v("En cours")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "En pause" } }, [
-                          _vm._v("En pause")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Terminé" } }, [
-                          _vm._v("Terminé")
-                        ])
-                      ]
-                    )
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "nom", id: "nom" },
+                      domProps: { value: _vm.contact.nom },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.contact, "nom", $event.target.value)
+                        }
+                      }
+                    })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-6" }, [
-                    _c("label", { attrs: { for: "" } }, [_vm._v("Catégorie")]),
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Téléphone")]),
                     _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.contact.categorie,
-                            expression: "contact.categorie"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { id: "" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.contact,
-                              "categorie",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.contact.tel,
+                          expression: "contact.tel"
                         }
-                      },
-                      [
-                        _c("option", { attrs: { value: "cat1" } }, [
-                          _vm._v("cat1")
-                        ])
-                      ]
-                    )
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "tel", id: "tel" },
+                      domProps: { value: _vm.contact.tel },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.contact, "tel", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Email")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.contact.email,
+                          expression: "contact.email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "email", id: "email" },
+                      domProps: { value: _vm.contact.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.contact, "email", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Fonction")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.contact.fonction,
+                          expression: "contact.fonction"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "fonction", id: "fonction" },
+                      domProps: { value: _vm.contact.fonction },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.contact, "fonction", $event.target.value)
+                        }
+                      }
+                    })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
@@ -41985,7 +42060,7 @@ var render = function() {
         "div",
         { staticClass: "container-fluid" },
         [
-          _c("devis-add"),
+          _c("devis-add", { on: { "task-added": _vm.refresh } }),
           _vm._v(" "),
           _c("table", { staticClass: "table mt-2" }, [
             _vm._m(1),
@@ -42521,7 +42596,7 @@ var render = function() {
         "div",
         { staticClass: "container-fluid" },
         [
-          _c("projet-add"),
+          _c("projet-add", { on: { "task-added": _vm.refresh } }),
           _vm._v(" "),
           _c("table", { staticClass: "table mt-2" }, [
             _vm._m(1),
@@ -42630,29 +42705,39 @@ var render = function() {
       _c("adminlte-bread"),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _c("table", { staticClass: "table mt-2" }, [
-            _vm._m(0),
+        _c(
+          "div",
+          { staticClass: "container-fluid" },
+          [
+            _c("table", { staticClass: "table mt-2" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.users.data, function(user) {
+                  return _c("tr", { key: user.id }, [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(_vm._s(user.id))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(user.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(user.email))]),
+                    _vm._v(" "),
+                    _c("td")
+                  ])
+                }),
+                0
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.users.data, function(user) {
-                return _c("tr", { key: user.id }, [
-                  _c("th", { attrs: { scope: "row" } }, [
-                    _vm._v(_vm._s(user.id))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.email))]),
-                  _vm._v(" "),
-                  _c("td")
-                ])
-              }),
-              0
-            )
-          ])
-        ])
+            _c("pagination", {
+              attrs: { data: _vm.users },
+              on: { "pagination-change-page": _vm.getResults }
+            })
+          ],
+          1
+        )
       ])
     ],
     1

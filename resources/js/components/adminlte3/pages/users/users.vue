@@ -28,7 +28,7 @@
                 </tr>
             </tbody>
         </table>
-
+        <pagination :data="users" @pagination-change-page="getResults"></pagination>
 
         <!-- =============================================================== -->
       </div>
@@ -38,6 +38,9 @@
 
 <script>
     export default {
+        mounted() {
+            console.log('Component mounted.');
+        },
         data(){
             return {
                 users: {},
@@ -54,16 +57,15 @@
                 .catch(error => console.log(error)
                 );
         },
-        mounted() {
-            console.log('Component mounted.');
-            this.getResults();
-        },
         methods: {
             getResults(page = 1) {
                 axios.get(this.serverlink+'/api/users?page=' + page)
                     .then(response => {
                         this.users = response.data;
                     });
+            },
+            refresh(users){
+                this.getResults();
             }
         }
     }

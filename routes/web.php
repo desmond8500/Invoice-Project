@@ -16,7 +16,16 @@ Route::get('/', function () {
     return view('adminlte');
 })->name('index');
 
+// Vue JS
 Route::get('/index', 'IndexController@adminlte')->name('adminlte');
+
+// Laravel
+Route::get('/admin', 'AdminlteController@index')->name('admin');
+Route::get('/admin/clients', 'AdminlteController@clients')->name('clients');
+Route::get('/admin/projets', 'AdminlteController@projets')->name('projets');
+Route::get('/admin/devis', 'AdminlteController@devis')->name('devis');
+Route::get('/admin/users', 'AdminlteController@users')->name('users');
+Route::get('/admin/contacts', 'AdminlteController@contacts')->name('contacts');
 
 Auth::routes(['verify' => true]);
 

@@ -60,7 +60,8 @@ class ClientController extends AppBaseController
 
         Flash::success('Client saved successfully.');
 
-        return redirect(route('clients.index'));
+        // return redirect(route('clients.index'));
+        return redirect()->back();
     }
 
     /**
@@ -125,7 +126,8 @@ class ClientController extends AppBaseController
 
         Flash::success('Client updated successfully.');
 
-        return redirect(route('clients.index'));
+        // return redirect(route('clients.index'));
+        return redirect()->back();
     }
 
     /**
@@ -151,6 +153,7 @@ class ClientController extends AppBaseController
 
         Flash::success('Client deleted successfully.');
 
-        return redirect(route('clients.index'));
+        // return redirect(route('clients.index'));
+        return redirect()->back();
     }
 }

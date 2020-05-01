@@ -21,7 +21,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-          <devis-add></devis-add>
+          <devis-add @task-added="refresh"></devis-add>
 
           <table class="table mt-2">
             <thead class="thead-dark">
@@ -54,15 +54,6 @@
 
 <script>
     export default {
-        created(){
-                axios.get(this.serverlink+'/api/devis')
-                .then(response => {
-                    this.deviss = response.data;
-                    console.log(response.data);
-                    })
-                .catch(error => console.log(error)
-                );
-        },
         mounted() {
             console.log('Component mounted.')
         },
@@ -72,6 +63,27 @@
                 locallink: 'http://localhost:8000',
                 serverlink: 'http://invoicing.yonkou.info'
             }
+        },
+        created(){
+            axios.get(this.serverlink+'/api/devis')
+            .then(response => {
+                this.deviss = response.data;
+                console.log(response.data);
+                })
+            .catch(error => console.log(error)
+            );
+        },
+        methods: {
+            getResults(page = 1) {
+                axios.get(this.serverlink+'/api/devis?page=' + page)
+                    .then(response => {
+                        this.deviss = response.data;
+                    });
+            },
+            refresh(deviss){
+                this.getResults();
+            }
         }
+
     }
 </script>

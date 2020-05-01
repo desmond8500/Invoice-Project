@@ -9,7 +9,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteProjectLabel">Supprimmer un projet un Projet</h5>
+                <h5 class="modal-title" id="deleteProjectLabel">Supprimmer un projet un Projet {{ id }} </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,7 +22,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" @click="store" v-if="dismiss">Valider</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" @click="del(id)"  v-if="dismiss">Valider</button>
             </div>
             </div>
         </div>
@@ -47,18 +47,16 @@
             console.log('Component mounted.');
         },
         methods: {
-            store(){
-                axios.post(this.serverlink+'/api/clients',{
-                    compte_id:      this.compte_id,
-                    nom:            this.nom,
-                    description:    this.description,
-                    adresse:        this.adresse
-                })
-                .then(response => console.log(response))
+            del(id){
+                axios.delete(this.serverlink+'/api/clients/'+id)
+                .then(response => {
+                        this.clients = response.data;
+                    })
                 .then(response => this.$emit('task-added',response))
                 .catch(error => console.log(error));
                 this.dismiss = false;
-            },
-        }
+            }
+        },
+        props: ['id']
     }
 </script>
