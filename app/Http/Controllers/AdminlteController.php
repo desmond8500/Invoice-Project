@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Contact;
 use App\Models\Devis;
 use App\Models\Projet;
 use App\User;
@@ -15,14 +16,26 @@ class AdminlteController extends Controller
     public function index()
     {
         $linkroutes = json_decode('[
-                { "id": 1, "name": "Clients", "route": "/api/clients"},
-                { "id": 2, "name": "Projets", "route": "/api/projets"},
-                { "id": 3, "name": "Devis", "route": "/api/devis"},
-                { "id": 4, "name": "Contacts", "route": "/api/contacts"}
+                { "id": 1, "name": "Tous les clients", "route": "/api/clients"},
+                { "id": 2, "name": "Tous  les projets", "route": "/api/projets"},
+                { "id": 3, "name": "Tous les devis", "route": "/api/devis"},
+                { "id": 4, "name": "Tous les contacts", "route": "/api/contacts"}
             ]'
         );
 
-        return view('0 AdminLte3.pages.index',compact('linkroutes'));
+        $clients = Client::all()->count();
+        $projets = Projet::all()->count();
+        $devis   = Devis::all()->count();
+        $contacts = Contact::all()->count();
+
+        $resume[] = array( 'text'=> 'Clients', 'number'=> $clients, 'icon'=>'fa-user', 'color'=>'bg-info');
+        $resume[] = array( 'text'=> 'Projets', 'number'=> $projets, 'icon'=>'fa-folder', 'color'=>'bg-info');
+        $resume[] = array( 'text'=> 'Devis', 'number'=> $devis, 'icon'=> 'fa-file', 'color'=>'bg-info');
+        $resume[] = array( 'text'=> 'Contacts', 'number'=> $contacts, 'icon'=>'fa-id-card', 'color'=>'bg-info');
+
+        $infoboxes = json_decode(json_encode($resume));
+
+        return view('0 AdminLte3.pages.index',compact('linkroutes','infoboxes'));
     }
 
     public function clients()
@@ -50,6 +63,8 @@ class AdminlteController extends Controller
     }
     public function contacts()
     {
-        return view('0 AdminLte3.pages.contacts.contacts');
+        $clients = Client::all();
+        $contacts = Contact::all();
+        return view('0 AdminLte3.pages.contacts.contacts', compact('clients', 'contacts'));
     }
 }

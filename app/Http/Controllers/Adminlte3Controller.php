@@ -27,9 +27,8 @@ class Adminlte3Controller extends Controller
             "logo": "adminlte/img/AdminLTELogo.png",
             "name": "Invoicing",
             "menus": [
-                { "name": "Clients",        "route": "clients", "icon": "fa-book" },
-                { "name": "Utilisateurs",   "route": "users", "icon": "fa-user" },
-                { "name": "Contacts",       "route": "contacts", "icon": "fa-user" }
+                { "name": "Clients",        "route": "clients", "icon": "fa-user" },
+                { "name": "Utilisateurs",   "route": "users", "icon": "fa-user" }
             ]
         }');
 

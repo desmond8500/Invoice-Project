@@ -31,6 +31,13 @@ Route::get('/admin/projetslist/{client_id?}', 'InvoicesController@projetslist')-
 Route::get('/admin/contactslist/{client_id?}', 'InvoicesController@contactslist')->name('contacts.list');
 Route::get('/admin/devislist/{projet_id?}', 'InvoicesController@devislist')->name('devis.list');
 
+// API
+Route::get('/invoices', 'InvoicesAPIController@index');
+// Route::get('/invoices/count/{data}', 'InvoicesAPIController@count');
+Route::get('/invoices/list/{data}/{id?}', 'InvoicesAPIController@list');
+
+
+// Infyom
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified')->name('home');
@@ -45,7 +52,7 @@ Route::post('generator_builder/generate-from-file','\InfyOm\GeneratorBuilder\Con
 
 
 
-
+// Models
 Route::resource('clients', 'ClientController');
 Route::resource('projets', 'ProjetController');
 Route::resource('contacts', 'ContactController');

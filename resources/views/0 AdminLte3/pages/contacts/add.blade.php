@@ -16,7 +16,7 @@ Ajouter un contact
                 @csrf
                 @method('post')
                 <div class="modal-body">
-                    <input type="text" name="client_id" class="form-control" >
+                    <input type="text" name="client_id" class="form-control" value="{{$client->id}}">
                     <div class="form-group">
                         <label for="">Prénom du contact</label>
                         <input type="text" name="prenom" class="form-control">

@@ -10,25 +10,23 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3">
-            @include('0 AdminLte3.component.infobox')
-        </div>
         <div class="col-md-12">
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Informations</h4>
-                <p>
-                    La mise à jour des modèles est en cours
-                </p>
+            <div class="row">
+                @foreach ($infoboxes as $infobox)
+                <div class="col-md-3">
+                    @include('0 AdminLte3.component.infobox',[$infobox])
+                </div>
+                @endforeach
             </div>
         </div>
-        <div class="col-md-12">
-            <h3>Routes</h3>
-            <table class="table mt-2">
+        <div class="col-md-6">
+            <h3>Routes principales</h3>
+            <table class="table mt-2 bg-white">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">route</th>
+                        <th scope="col">Route</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +39,13 @@
                 @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="col-md-6">
+            <h3>Informations</h3>
+            <div class="alert alert-info" role="alert">
+              <h4 class="alert-heading">API</h4>
+              <p>Liste des API de base</p>
+            </div>
         </div>
 
     </div>

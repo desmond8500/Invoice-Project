@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Contact;
 use App\Models\Devis;
 use App\Models\Projet;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class InvoicesController extends Controller
     public function contactslist($client_id){
         $clients = Client::all();
         $client = Client::find($client_id);
-        $contacts = contact::where('client_id',$client_id)->get();
+        $contacts = Contact::where('client_id',$client_id)->get();
         return view('0 AdminLte3.pages.contacts.contacts', compact('client', 'clients', 'contacts'));
     }
 

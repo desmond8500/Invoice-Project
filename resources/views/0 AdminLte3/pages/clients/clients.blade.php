@@ -20,6 +20,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Contacts</th>
                         <th scope="col">Adresse</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -34,6 +35,9 @@
                             </a>
                         </td>
                         <td>{{ $client->description }}</td>
+                        <td>
+                            <a href="{{route('contacts.list',['client_id'=>$client->id])}}">liste</a>
+                        </td>
                         <td>{{ $client->adresse }}</td>
                         <td>
                             @include('0 AdminLte3.pages.clients.edit',[$client])
