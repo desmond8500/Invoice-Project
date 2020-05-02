@@ -16,7 +16,7 @@
                             @else
                             <a href="{!! route($item->route) !!}" class="nav-link">
                         @endisset
-                            <i class="fas {{ $item->icon }} nav-icon"></i>
+                            <i class="fa {{ $item->icon ?? 'nav-icon'}} "></i>
                             <p>{{ $item->name }}</p>
                         </a>
                     </li>

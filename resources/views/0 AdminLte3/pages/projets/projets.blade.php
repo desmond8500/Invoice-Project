@@ -10,10 +10,12 @@
 
 @section('content')
     <div class="row">
+        @if ($hide)
         <div class="col-md-12">
             @include('0 AdminLte3.pages.projets.add')
             @include('0 AdminLte3.pages.contacts.add')
         </div>
+        @endif
         <div class="col-md-12">
             <table class="table mt-2">
                 <thead class="thead-dark">

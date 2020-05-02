@@ -16,10 +16,13 @@ class AdminlteController extends Controller
     public function index()
     {
         $linkroutes = json_decode('[
-                { "id": 1, "name": "Tous les clients", "route": "/api/clients"},
-                { "id": 2, "name": "Tous  les projets", "route": "/api/projets"},
-                { "id": 3, "name": "Tous les devis", "route": "/api/devis"},
-                { "id": 4, "name": "Tous les contacts", "route": "/api/contacts"}
+                { "name": "Récupérer tous les clients", "route": "/api/clients"},
+                { "name": "Récupérer tous les projets", "route": "/api/projets"},
+                { "name": "Récupérer tous les projets d\'un client", "route": "/invoices/list/projets/{id}"},
+                { "name": "Récupérer tous les devis", "route": "/api/devis"},
+                { "name": "Récupérer tous les devis d\'un projet", "route": "/invoices/list/devis/{id}"},
+                { "name": "Récupérer tous les contacts", "route": "/api/contacts"},
+                { "name": "Récupérer tous les contacts d\'un projet", "route": "/invoices/list/contacts/{id}"}
             ]'
         );
 
@@ -48,13 +51,15 @@ class AdminlteController extends Controller
     {
         $clients = Client::all();
         $projets = Projet::all();
-        return view('0 AdminLte3.pages.projets.projets',compact('clients' ,'projets'));
+        $hide = false;
+        return view('0 AdminLte3.pages.projets.projets',compact('hide','clients' ,'projets'));
     }
     public function devis()
     {
         $projets = Projet::all();
         $deviss = Devis::all();
-        return view('0 AdminLte3.pages.devis.devis', compact('deviss', 'projets'));
+        $hide = false;
+        return view('0 AdminLte3.pages.devis.devis', compact('hide', 'deviss', 'projets'));
     }
     public function users()
     {
@@ -65,6 +70,7 @@ class AdminlteController extends Controller
     {
         $clients = Client::all();
         $contacts = Contact::all();
-        return view('0 AdminLte3.pages.contacts.contacts', compact('clients', 'contacts'));
+        $hide = false;
+        return view('0 AdminLte3.pages.contacts.contacts', compact('hide', 'clients', 'contacts'));
     }
 }

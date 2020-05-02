@@ -28,7 +28,28 @@ class Adminlte3Controller extends Controller
             "name": "Invoicing",
             "menus": [
                 { "name": "Clients",        "route": "clients", "icon": "fa-user" },
-                { "name": "Utilisateurs",   "route": "users", "icon": "fa-user" }
+                { "name": "Utilisateurs",   "route": "users", "icon": "fa-user" },
+                {
+                    "name": "Test",
+                    "icon": "fa-folder",
+                    "route": [
+                        {
+                            "name": "Tours les Projets",
+                            "route": "projets",
+                            "icon": "fa-folder"
+                        },
+                        {
+                            "name": "Tours les Devis",
+                            "route": "devis",
+                            "icon": "fa-file"
+                        },
+                        {
+                            "name": "Tours les Contacts",
+                            "route": "contacts",
+                            "icon": "fa-card-id"
+                        }
+                    ]
+                }
             ]
         }');
 

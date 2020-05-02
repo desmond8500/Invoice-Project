@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    // return redirect()->route('adminlte');
-    return view('adminlte');
+    return redirect()->route('admin');
+    // return view('adminlte');
 })->name('index');
 
 // Vue JS

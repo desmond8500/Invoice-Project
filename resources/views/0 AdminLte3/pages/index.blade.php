@@ -19,7 +19,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h3>Routes principales</h3>
             <table class="table mt-2 bg-white">
                 <thead class="thead-dark">
@@ -30,9 +30,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($linkroutes as $routelink)
+                @foreach ($linkroutes as $key => $routelink)
                     <tr>
-                        <th scope="row">{{ $routelink->id }}</th>
+                        <th scope="row">{{ $key+1 }}</th>
                         <td>{{ $routelink->name }}</td>
                         <td>{{ $routelink->route }}</td>
                     </tr>
@@ -40,7 +40,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h3>Informations</h3>
             <div class="alert alert-info" role="alert">
               <h4 class="alert-heading">API</h4>

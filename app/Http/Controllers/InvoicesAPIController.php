@@ -30,14 +30,15 @@ class InvoicesAPIController extends Controller
                 $datas = Projet::where('client_id',$id)->get();
                 break;
             case 'devis':
-                $datas = Devis::all();
+                $datas = Devis::where('project_id', $id)->get();
                 break;
-            case 'devis':
-                $datas = Contact::all();
+            case 'contacts':
+                $datas = Contact::where('client_id', $id)->get();
                 break;
 
             default:
                 $success = false;
+                $datas = null;
                 break;
         }
         $response = array(
