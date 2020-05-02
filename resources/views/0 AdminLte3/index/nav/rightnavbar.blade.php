@@ -115,9 +115,11 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
             @else
-            {{-- <button type="button" class="btn btn-{{ $form['color'] ?? "dark" }}" data-toggle="modal" data-target=".adminltelogin">Connexion</button> --}}
+            <a type="button" class="btn btn-dark" href="{{ url('login')}} ">Connexion</a>
+
+
             {{-- <button type="button" class="btn btn-{{ $form['color'] ?? "outline-dark" }}" data-toggle="modal" data-target=".adminlteregister">Inscription</button> --}}
-            @include('0 Component.navbarLoginButton',['admin_color'=>'dark', 'deconnexion_color'=>'dark'])
+            {{-- @include('0 Component.navbarLoginButton',['admin_color'=>'dark', 'deconnexion_color'=>'dark']) --}}
             @endisset
     </li>
 

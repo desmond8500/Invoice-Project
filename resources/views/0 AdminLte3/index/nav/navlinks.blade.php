@@ -5,6 +5,9 @@
     <li class="nav-item d-none d-sm-inline-block">
         <a href="{!! route('index') !!}" class="nav-link">Accueil</a>
     </li>
+    <li class="nav-item d-none d-sm-inline-block">
+        <a href="{!! route('home') !!}" class="nav-link">Infyom</a>
+    </li>
     @isset($user)
         @if($user->role == 'admin')
             <li class="nav-item d-none d-sm-inline-block">

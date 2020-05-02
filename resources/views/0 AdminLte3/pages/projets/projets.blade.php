@@ -5,7 +5,10 @@
 @endsection
 
 @section('breadcrumb')
-    {{-- <li class="breadcrumb-item active">Acceuil</li> --}}
+    @if ($hide)
+        <li class="breadcrumb-item active"><a href="{{route('clients')}}">Clients</a></li>
+        <li class="breadcrumb-item active">Projets</li>
+    @endif
 @endsection
 
 @section('content')
@@ -18,7 +21,7 @@
         </div>
         @endif
         <div class="col-md-12">
-            <table class="table mt-2">
+            <table class="table bg-white table-sm bg-white mt-2">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>

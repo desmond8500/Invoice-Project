@@ -18,7 +18,7 @@
         {{-- Narbar --}}
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             @include('0 AdminLte3/index/nav/navlinks')
-            @include('0 AdminLte3/index/nav/searchform')
+            {{-- @include('0 AdminLte3/index/nav/searchform') --}}
             @include('0 AdminLte3/index/nav/rightnavbar')
         </nav>
 

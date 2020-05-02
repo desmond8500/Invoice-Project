@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-light mr-2 text-light" data-toggle="modal" data-target="#oregister">
+<button type="button" class="btn btn-outline-dark mr-2  " data-toggle="modal" data-target="#oregister">
     Inscription
 </button>
 

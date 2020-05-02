@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="row">
                 @foreach ($infoboxes as $infobox)
-                <div class="col-md-3">
+                <div class="col-md-3 col-xs-6 col-sm-6">
                     @include('0 AdminLte3.component.infobox',[$infobox])
                 </div>
                 @endforeach

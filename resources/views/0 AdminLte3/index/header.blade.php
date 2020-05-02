@@ -6,7 +6,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{!! route($route ?? "admin") !!}">{{ $name ?? "Home" }}</a></li>
+            <li class="breadcrumb-item"><a href="{!! route($route ?? "admin") !!}">{{ $name ?? "Accueil" }}</a></li>
               @yield('breadcrumb')
             </ol>
           </div><!-- /.col -->

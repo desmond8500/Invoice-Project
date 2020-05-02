@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb')
-    {{-- <li class="breadcrumb-item active">Acceuil</li> --}}
+    <li class="breadcrumb-item active">Clients</li>
 @endsection
 
 @section('content')
@@ -14,12 +14,12 @@
             @include('0 AdminLte3.pages.clients.add')
         </div>
         <div class="col-md-12">
-            <table class="table mt-2">
+            <table class="table bg-white sm mt-2">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">Description</th>
+                        <th>Description</th>
                         <th scope="col">Contacts</th>
                         <th scope="col">Adresse</th>
                         <th scope="col">Actions</th>
