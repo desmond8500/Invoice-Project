@@ -32,7 +32,12 @@ Ajouter un projet
                     </div>
                     <div class="form-group">
                         <label for="">Statut</label>
-                        <input type="text" name="statut"  class="form-control">
+                        <select name="statut" class="form-control">
+                            <option value="Nouveau">Nouveau</option>
+                            <option value="En cours">En cours</option>
+                            <option value="En pause">En pause</option>
+                            <option value="Terminé">Terminé</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
