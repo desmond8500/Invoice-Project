@@ -28,7 +28,11 @@
                 @foreach ($clients as $key => $client)
                     <tr>
                         <th scope="row">{{ $key+1 }}</th>
-                        <td>{{ $client->nom }}</td>
+                        <td>
+                            <a href="{{route('projets.list',['client_id'=>$client->id])}}">
+                                {{ $client->nom }}
+                            </a>
+                        </td>
                         <td>{{ $client->description }}</td>
                         <td>{{ $client->adresse }}</td>
                         <td>

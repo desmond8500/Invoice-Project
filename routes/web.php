@@ -27,6 +27,10 @@ Route::get('/admin/devis', 'AdminlteController@devis')->name('devis');
 Route::get('/admin/users', 'AdminlteController@users')->name('users');
 Route::get('/admin/contacts', 'AdminlteController@contacts')->name('contacts');
 
+Route::get('/admin/projetslist/{client_id?}', 'InvoicesController@projetslist')->name('projets.list');
+Route::get('/admin/contactslist/{client_id?}', 'InvoicesController@contactslist')->name('contacts.list');
+Route::get('/admin/devislist/{projet_id?}', 'InvoicesController@devislist')->name('devis.list');
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified')->name('home');
@@ -43,11 +47,6 @@ Route::post('generator_builder/generate-from-file','\InfyOm\GeneratorBuilder\Con
 
 
 Route::resource('clients', 'ClientController');
-
 Route::resource('projets', 'ProjetController');
-
-
-
 Route::resource('contacts', 'ContactController');
-
 Route::resource('devis', 'DevisController');

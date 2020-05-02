@@ -60,7 +60,8 @@ class ProjetController extends AppBaseController
 
         Flash::success('Projet saved successfully.');
 
-        return redirect(route('projets.index'));
+        // return redirect(route('projets.index'));
+        return redirect()->back();
     }
 
     /**
@@ -125,7 +126,8 @@ class ProjetController extends AppBaseController
 
         Flash::success('Projet updated successfully.');
 
-        return redirect(route('projets.index'));
+        // return redirect(route('projets.index'));
+        return redirect()->back();
     }
 
     /**
@@ -151,6 +153,7 @@ class ProjetController extends AppBaseController
 
         Flash::success('Projet deleted successfully.');
 
-        return redirect(route('projets.index'));
+        // return redirect(route('projets.index'));
+        return redirect()->back();
     }
 }

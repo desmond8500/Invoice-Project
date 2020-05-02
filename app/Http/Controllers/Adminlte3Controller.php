@@ -24,12 +24,10 @@ class Adminlte3Controller extends Controller
     {
         $sidebar = json_decode('{
             "route": "admin",
-            "logo": "adminlte/img/user2-160x160.jpg",
+            "logo": "adminlte/img/AdminLTELogo.png",
             "name": "Invoicing",
             "menus": [
                 { "name": "Clients",        "route": "clients", "icon": "fa-book" },
-                { "name": "Projets",        "route": "projets", "icon": "fa-book" },
-                { "name": "Devis",          "route": "devis", "icon": "fa-book" },
                 { "name": "Utilisateurs",   "route": "users", "icon": "fa-user" },
                 { "name": "Contacts",       "route": "contacts", "icon": "fa-user" }
             ]

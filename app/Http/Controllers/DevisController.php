@@ -60,7 +60,8 @@ class DevisController extends AppBaseController
 
         Flash::success('Devis saved successfully.');
 
-        return redirect(route('devis.index'));
+        // return redirect(route('devis.index'));
+        return redirect()->back();
     }
 
     /**
@@ -125,7 +126,8 @@ class DevisController extends AppBaseController
 
         Flash::success('Devis updated successfully.');
 
-        return redirect(route('devis.index'));
+        // return redirect(route('devis.index'));
+        return redirect()->back();
     }
 
     /**
@@ -151,6 +153,7 @@ class DevisController extends AppBaseController
 
         Flash::success('Devis deleted successfully.');
 
-        return redirect(route('devis.index'));
+        // return redirect(route('devis.index'));
+        return redirect()->back();
     }
 }
