@@ -37,7 +37,8 @@
     </button>
 
     <a href="{{ url('/')}}" class="btn btn-dark mr-2">Acceuil</a>
-    <a href="{{ route('io_generator_builder')}}" class="btn btn-success">Générator</a>
+    <a href="{{ route('io_generator_builder')}}" class="btn btn-success mr-2">Générator</a>
+    <a href="{{ route('init')}}" class="btn btn-info text-white">Init</a>
 
     <ul class="nav navbar-nav ml-auto">
         <li class="nav-item d-md-down-none">

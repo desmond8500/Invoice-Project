@@ -25,3 +25,6 @@ Route::resource('projets', 'ProjetAPIController');
 Route::resource('contacts', 'ContactAPIController');
 Route::resource('users', 'UserAPIController');
 Route::resource('devis', 'DevisAPIController');
+
+
+Route::resource('projet_categories', 'Projet_categorieAPIController');

@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Contact;
 use App\Models\Devis;
 use App\Models\Projet;
+use App\Models\Projet_categorie;
 use Illuminate\Http\Request;
 
 class InvoicesController extends Controller
@@ -31,5 +32,27 @@ class InvoicesController extends Controller
         $deviss = Devis::where('projet_id',$projet_id)->get();
         $hide = true;
         return view('0 AdminLte3.pages.devis.devis', compact('hide','projet', 'deviss'));
+    }
+
+    // Initialisations
+    public function init(){
+        $this->initProjectCategorie();
+    }
+
+    public function initProjectCategorie(){
+        $categories = json_decode('[
+            { "categorie": "Landing Page", "description": "1" },
+            { "categorie": "Application Web", "description": "1" },
+            { "categorie": "Application mobile", "description": "1" },
+            { "categorie": "Ecommerce", "description": "1" },
+            { "categorie": "ERP", "description": "1" }
+        ]');
+
+        foreach ($categories as $key => $categorie) {
+            $cat = new Projet_categorie();
+            $cat->categorie = $categorie->categorie;
+            $cat->description = $categorie->description;
+            $cat->save();
+        }
     }
 }

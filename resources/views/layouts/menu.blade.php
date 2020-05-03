@@ -24,3 +24,9 @@
         <span>Devis</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('projetCategories*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('projetCategories.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Projet Categories</span>
+    </a>
+</li>

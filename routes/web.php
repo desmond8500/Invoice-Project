@@ -35,6 +35,7 @@ Route::get('/admin/devislist/{projet_id?}', 'InvoicesController@devislist')->nam
 Route::get('/invoices', 'InvoicesAPIController@index');
 // Route::get('/invoices/count/{data}', 'InvoicesAPIController@count');
 Route::get('/invoices/list/{data}/{id?}', 'InvoicesAPIController@list');
+Route::get('/invoices/init', 'InvoicesController@init')->name('init');
 
 
 // Infyom
@@ -57,3 +58,6 @@ Route::resource('clients', 'ClientController');
 Route::resource('projets', 'ProjetController');
 Route::resource('contacts', 'ContactController');
 Route::resource('devis', 'DevisController');
+
+
+Route::resource('projetCategories', 'Projet_categorieController');
