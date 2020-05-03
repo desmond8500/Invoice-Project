@@ -24,10 +24,10 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nom</th>
+                        <th scope="col">Référence</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Catégorie</th>
                         <th scope="col">Statut</th>
+                        <th scope="col">Body</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -35,18 +35,22 @@
                 @foreach ($deviss as $key => $devis)
                     <tr>
                         <th scope="row">{{ $key+1 }}</th>
-                        <td>{{ $devis->nom }}</td>
+                        <td>{{ $devis->reference }}</td>
                         <td>{{ $devis->description }}</td>
-                        <td>{{ $devis->categorie }}</td>
                         <td>{{ $devis->statut }}</td>
+                        <td>{{ $devis->body }}</td>
                         <td>
-                            @include('0 AdminLte3.pages.devis.edit',[$devis])
+                            @include('0 AdminLte3.pages.devis.nedit',[$devis])
                             @include('0 AdminLte3.pages.devis.delete',[$devis])
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="col-md-12">
+            {{-- @include('0 AdminLte3.pages.devis.tab',[$devis]) --}}
+            {{-- @include('0 AdminLte3.pages.devis.tabh',[$devis]) --}}
         </div>
 
     </div>

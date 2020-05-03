@@ -36,6 +36,7 @@ Route::get('/invoices', 'InvoicesAPIController@index');
 // Route::get('/invoices/count/{data}', 'InvoicesAPIController@count');
 Route::get('/invoices/list/{data}/{id?}', 'InvoicesAPIController@list');
 Route::get('/invoices/init', 'InvoicesController@init')->name('init');
+Route::post('/invoices/devis/edit', 'InvoicesController@devisEdit')->name('devisEdit');
 
 
 // Infyom

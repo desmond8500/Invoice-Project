@@ -31,7 +31,32 @@ class InvoicesController extends Controller
         $projet = Projet::find($projet_id);
         $deviss = Devis::where('projet_id',$projet_id)->get();
         $hide = true;
-        return view('0 AdminLte3.pages.devis.devis', compact('hide','projet', 'deviss'));
+
+        $categories = json_decode('[
+            { "id": "landind", "name": "Landing page" },
+            { "id": "web", "name": "Application Web" },
+            { "id": "mobile", "name": "Application mobile" },
+            { "id": "ecommerce", "name": "Site de Ecommerce" },
+            { "id": "erp", "name": "ERP" }
+        ]');
+
+        $autres = json_decode('[
+            { "id": "landind", "name": "Landing page" },
+            { "id": "web", "name": "Application Web" },
+            { "id": "mobile", "name": "Application mobile" },
+            { "id": "ecommerce", "name": "Site de Ecommerce" },
+            { "id": "erp", "name": "ERP" }
+        ]');
+
+        return view('0 AdminLte3.pages.devis.devis', compact('hide','projet', 'deviss','categories'));
+    }
+    public function devisEdit(Request $request){
+        // dump($request);
+        $devis = Devis::find($request->id);
+        // $devis->body = $request->body;
+        $devis->save();
+
+        return redirect()->back();
     }
 
     // Initialisations

@@ -34,19 +34,19 @@ class Adminlte3Controller extends Controller
                     "icon": "fa-folder",
                     "route": [
                         {
-                            "name": "Tours les Projets",
+                            "name": "Tous les Projets",
                             "route": "projets",
                             "icon": "fa-folder"
                         },
                         {
-                            "name": "Tours les Devis",
+                            "name": "Tous les Devis",
                             "route": "devis",
                             "icon": "fa-file"
                         },
                         {
-                            "name": "Tours les Contacts",
+                            "name": "Tous les Contacts",
                             "route": "contacts",
-                            "icon": "fa-card-id"
+                            "icon": "fa-id-card"
                         }
                     ]
                 }
