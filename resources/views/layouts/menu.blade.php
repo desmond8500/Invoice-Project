@@ -30,3 +30,9 @@
         <span>Projet Categories</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('devisInputs*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('devisInputs.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Devis Inputs</span>
+    </a>
+</li>

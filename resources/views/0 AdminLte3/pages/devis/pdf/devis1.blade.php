@@ -16,9 +16,10 @@
     <div class="row">
         @if ($hide)
         <div class="col-md-12">
-            @include('0 AdminLte3.pages.devis.add')
+            {{-- @include('0 AdminLte3.pages.devis.add') --}}
         </div>
         @endif
+        @dump($devis->body)
         <div class="col-md-12">
             <table class="table table-sm bg-white bg-white mt-2">
                 <thead class="thead-dark">
@@ -27,12 +28,12 @@
                         <th scope="col">Référence</th>
                         <th scope="col">Description</th>
                         <th scope="col">Statut</th>
-                        {{-- <th scope="col">Body</th> --}}
+                        <th scope="col">Body</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($deviss as $key => $devis)
+                {{-- @foreach ($deviss as $key => $devis)
                     <tr>
                         <th scope="row">{{ $key+1 }}</th>
                         <td>
@@ -40,7 +41,7 @@
                         </td>
                         <td>{{ $devis->description }}</td>
                         <td>{{ $devis->statut }}</td>
-                        {{-- <td>{{ $devis->body }}</td> --}}
+                        <td>{{ $devis->body }}</td>
                         <td>
                             @include('0 AdminLte3.pages.devis.nedit',[$devis])
                             @include('0 AdminLte3.pages.devis.delete',[$devis])
@@ -49,7 +50,7 @@
                             </a>
                         </td>
                     </tr>
-                @endforeach
+                @endforeach --}}
                 </tbody>
             </table>
         </div>

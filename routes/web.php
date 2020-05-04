@@ -37,6 +37,8 @@ Route::get('/invoices', 'InvoicesAPIController@index');
 Route::get('/invoices/list/{data}/{id?}', 'InvoicesAPIController@list');
 Route::get('/invoices/init', 'InvoicesController@init')->name('init');
 Route::post('/invoices/devis/edit', 'InvoicesController@devisEdit')->name('devisEdit');
+Route::get('/invoices/devis/pdf/{id}', 'InvoicesController@devisPDF')->name('devisPDF');
+Route::get('/invoices/devis/showPDF/{id}', 'InvoicesController@showPDF')->name('showPDF');
 
 
 // Infyom
@@ -62,3 +64,6 @@ Route::resource('devis', 'DevisController');
 
 
 Route::resource('projetCategories', 'Projet_categorieController');
+
+
+Route::resource('devisInputs', 'Devis_inputController');

@@ -28,3 +28,5 @@ Route::resource('devis', 'DevisAPIController');
 
 
 Route::resource('projet_categories', 'Projet_categorieAPIController');
+
+Route::resource('devis_inputs', 'Devis_inputAPIController');

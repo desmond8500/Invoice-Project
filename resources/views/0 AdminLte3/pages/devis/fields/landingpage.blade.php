@@ -1,11 +1,11 @@
 @php
     $contents = json_decode('[
-        { "name": "design",       "fonction": "Theme",          "prix": "1000", "description": "Thème qui sera appliqué à la page"},
-        { "name": "form",         "fonction": "Formulaires",    "prix": "1000", "description": "Les formulaires de commentaire, de newletter etc"},
-        { "name": "hebergement",  "fonction": "Hébergement",    "prix": "1000", "description": "Serveur en ligne"},
-        { "name": "domaine",      "fonction": "Nom de domaine", "prix": "1000", "description": "L\'adresse en ligne"},
-        { "name": "seo",          "fonction": "Référencement",  "prix": "1000", "description": "Permet mettre en avant la page sur internet"},
-        { "name": "https",        "fonction": "Sécutité",       "prix": "1000", "description": "L\'adresse en ligne"}
+        { "name": "landing_design",       "fonction": "Theme",          "prix": "1000", "description": "Thème qui sera appliqué à la page"},
+        { "name": "landing_form",         "fonction": "Formulaires",    "prix": "1000", "description": "Les formulaires de commentaire, de newletter etc"},
+        { "name": "landing_hebergement",  "fonction": "Hébergement",    "prix": "1000", "description": "Serveur en ligne"},
+        { "name": "landing_domaine",      "fonction": "Nom de domaine", "prix": "1000", "description": "L\'adresse en ligne"},
+        { "name": "landing_seo",          "fonction": "Référencement",  "prix": "1000", "description": "Permet mettre en avant la page sur internet"},
+        { "name": "landing_https",        "fonction": "Sécutité",       "prix": "1000", "description": "L\'adresse en ligne"}
     ]');
     $total = 0;
 @endphp
@@ -33,7 +33,7 @@
         <tr>
             <th scope="row">{{ $key+1 }}</th>
             <td class="text-center">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ $content->name}}" name="{{ $content->name}}">
             </td>
             <td>{{ $content->fonction }}</td>
             <td>{{ $content->description }}</td>
