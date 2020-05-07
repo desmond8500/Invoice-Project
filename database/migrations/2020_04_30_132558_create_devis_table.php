@@ -19,7 +19,7 @@ class CreateDevisTable extends Migration
             $table->string('reference');
             $table->string('description');
             $table->string('statut');
-            $table->string('body');
+            $table->text('body');
             $table->timestamps();
             $table->softDeletes();
         });

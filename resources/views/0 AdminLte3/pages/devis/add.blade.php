@@ -4,7 +4,7 @@ Ajouter un devis
 
 <!-- Modal -->
 <div class="modal fade" id="addDevis" tabindex="-1" role="dialog" aria-labelledby="addDevisLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addDevisLabel">Ajouter un devis</h5>
@@ -36,9 +36,8 @@ Ajouter un devis
                         <label for="">Description</label>
                         <textarea name="description" class="form-control" cols="30" rows="2"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="">body</label>
-                        <textarea name="body" class="form-control" cols="30" rows="2"></textarea>
+                    <div class="col-md-12">
+                        @include('0 AdminLte3.pages.devis.tab')
                     </div>
                 </div>
                 <div class="modal-footer">

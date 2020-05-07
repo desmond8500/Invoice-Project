@@ -42,8 +42,8 @@
                         <td>{{ $devis->statut }}</td>
                         {{-- <td>{{ $devis->body }}</td> --}}
                         <td>
-                            @include('0 AdminLte3.pages.devis.nedit',[$devis])
-                            @include('0 AdminLte3.pages.devis.delete',[$devis])
+                            @include('0 AdminLte3.pages.devis.nedit')
+                            @include('0 AdminLte3.pages.devis.delete')
                             <a href="{{route('devisPDF',['id'=>$devis->id])}}" class="btn btn-info">
                                 <i class="fa fa-file-pdf"></i>
                             </a>

@@ -34,27 +34,25 @@ class InvoicesController extends Controller
         $deviss = Devis::where('projet_id',$projet_id)->get();
         $hide = true;
 
-        $categories = json_decode('[
-            { "id": "landind", "name": "Landing page" },
-            { "id": "web", "name": "Application Web" },
-            { "id": "mobile", "name": "Application mobile" },
-            { "id": "ecommerce", "name": "Site de Ecommerce" },
-            { "id": "erp", "name": "ERP" }
-        ]');
 
-        $autres = json_decode('[
-            { "id": "landind", "name": "Landing page" },
-            { "id": "web", "name": "Application Web" },
-            { "id": "mobile", "name": "Application mobile" },
-            { "id": "ecommerce", "name": "Site de Ecommerce" },
-            { "id": "erp", "name": "ERP" }
-        ]');
 
-        return view('0 AdminLte3.pages.devis.devis', compact('hide','projet', 'deviss','categories'));
+        return view('0 AdminLte3.pages.devis.devis', compact('hide','projet', 'deviss'));
     }
     public function devisEdit(Request $request){
-        //  dd($request);
 
+        $body = $this->invoicing($request);
+
+        $devis = Devis::find($request->id);
+        $devis->body = $body;
+        $devis->reference = $request->reference;
+        $devis->statut = $request->statut;
+        $devis->description = $request->description;
+        $devis->save();
+
+        return redirect()->back();
+    }
+
+    public static function invoicing(Request $request){
         $landing = array(
             "landing_design"        => $request->landing_design,
             "landing_form"          => $request->landing_form,
@@ -64,7 +62,7 @@ class InvoicesController extends Controller
             "landing_https"         => $request->landing_https
         );
 
-        $ecommerce = array('ecommerce_ecommerce' => $request->ecommerce_ecommerce );
+        $ecommerce = array('ecommerce_ecommerce' => $request->ecommerce_ecommerce);
 
         $erp = array(
             "erp_design"      => $request->erp_design,
@@ -127,17 +125,7 @@ class InvoicesController extends Controller
             'web'       => $web
         );
 
-        $body = json_encode($body);
-
-
-        $devis = Devis::find($request->id);
-        $devis->body = $body;
-        $devis->reference = $request->reference;
-        $devis->statut = $request->statut;
-        $devis->description = $request->description;
-        $devis->save();
-
-        return redirect()->back();
+        return json_encode($body);
     }
 
     public function initInput(){

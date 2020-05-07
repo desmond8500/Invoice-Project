@@ -55,7 +55,7 @@ class DevisController extends AppBaseController
     public function store(CreateDevisRequest $request)
     {
         $input = $request->all();
-
+        $input['body'] = InvoicesController::invoicing($request);
         $devis = $this->devisRepository->create($input);
 
         Flash::success('Devis saved successfully.');
