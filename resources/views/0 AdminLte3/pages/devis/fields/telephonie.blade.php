@@ -1,11 +1,11 @@
 @php
     $contents = json_decode('[
-        { "name": "tel_asterisk",   "fonction": "Asterisk",     "prix": "1000", "description": "Serveur de téléphonie IP"},
-        { "name": "tel_serveur",    "fonction": "Serveur",      "prix": "1000", "description": "PC physique"},
-        { "name": "tel_telephones", "fonction": "Téléphones IP","prix": "1000", "description": "Téléphones IP"},
-        { "name": "tel_switch",     "fonction": "Switchs",      "prix": "1000", "description": "Des switchs pour l\'interconnexion"},
-        { "name": "tel_cablage",    "fonction": "Cablage",      "prix": "1000", "description": "Cablage"},
-        { "name": "tel_accessoires","fonction": "Accessoires",  "prix": "1000", "description": "Accessoires"}
+        { "status": "false", "name": "tel_asterisk",   "fonction": "Asterisk",     "prix": "1000", "description": "Serveur de téléphonie IP"},
+        { "status": "false", "name": "tel_serveur",    "fonction": "Serveur",      "prix": "1000", "description": "PC physique"},
+        { "status": "false", "name": "tel_telephones", "fonction": "Téléphones IP","prix": "1000", "description": "Téléphones IP"},
+        { "status": "false", "name": "tel_switch",     "fonction": "Switchs",      "prix": "1000", "description": "Des switchs pour l\'interconnexion"},
+        { "status": "false", "name": "tel_cablage",    "fonction": "Cablage",      "prix": "1000", "description": "Cablage"},
+        { "status": "false", "name": "tel_accessoires","fonction": "Accessoires",  "prix": "1000", "description": "Accessoires"}
     ]');
     $total = 0;
 @endphp
@@ -31,7 +31,7 @@
         <tr>
             <th scope="row">{{ $key+1 }}</th>
             <td class="text-center">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ $content->name}}" name="{{ $content->name}}">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ json_encode($content)}}" name="{{ $content->name}}">
             </td>
             <td>{{ $content->fonction }}</td>
             <td>{{ $content->description }}</td>

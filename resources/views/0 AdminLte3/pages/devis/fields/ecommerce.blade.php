@@ -1,6 +1,6 @@
 @php
     $contents = json_decode('[
-        { "name": "ecommerce_ecommerce",  "fonction": "Ecommerce de base",  "prix": "1000", "description": "Fonctionalités de base"}
+        { "status": "false", "name": "ecommerce_ecommerce",  "fonction": "Ecommerce de base",  "prix": "1000", "description": "Fonctionalités de base"}
     ]');
     $total = 0;
 @endphp
@@ -28,15 +28,13 @@
         <tr>
             <th scope="row">{{ $key+1 }}</th>
             <td class="text-center">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ $content->name}}" name="{{ $content->name}}">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ json_encode($content)}}" name="{{ $content->name}}">
             </td>
             <td>{{ $content->fonction }}</td>
             <td>{{ $content->description }}</td>
             <td class="text-right">{{ $content->prix }} F CFA</td>
         </tr>
-        @php
-            $total += $content->prix;
-        @endphp
+        @php $total += $content->prix; @endphp
     @endforeach
     <tr>
         <th colspan="4">Total</th>

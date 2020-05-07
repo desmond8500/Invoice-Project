@@ -53,19 +53,78 @@ class InvoicesController extends Controller
         return view('0 AdminLte3.pages.devis.devis', compact('hide','projet', 'deviss','categories'));
     }
     public function devisEdit(Request $request){
-        // dd($request);
+        //  dd($request);
 
         $landing = array(
-            "landing_design" => "landing_design",
-            "landing_form" => "landing_form",
-            "landing_hebergement" => "landing_hebergement",
-            "landing_domaine" => "landing_domaine",
-            "landing_seo" => "landing_seo",
-            "landing_https" => "landing_https"
+            "landing_design"        => $request->landing_design,
+            "landing_form"          => $request->landing_form,
+            "landing_hebergement"   => $request->landing_hebergement,
+            "landing_domaine"       => $request->landing_domaine,
+            "landing_seo"           => $request->landing_seo,
+            "landing_https"         => $request->landing_https
+        );
+
+        $ecommerce = array('ecommerce_ecommerce' => $request->ecommerce_ecommerce );
+
+        $erp = array(
+            "erp_design"      => $request->erp_design,
+            "erp_form"        => $request->erp_form,
+            "erp_hebergement" => $request->erp_hebergement,
+            "erp_domaine"     => $request->erp_domaine
+        );
+
+        $mobile = array(
+            "mobile_design"      => $request->mobile_design,
+            "mobile_form"        => $request->mobile_form,
+            "mobile_hebergement" => $request->mobile_hebergement,
+            "mobile_domaine"     => $request->mobile_domaine,
+            "mobile_seo"         => $request->mobile_seo,
+            "mobile_https"       => $request->mobile_https,
+
+            "mobile_auth"        => $request->mobile_auth,
+            "mobile_geoloc"      => $request->mobile_geoloc,
+            "mobile_langue"      => $request->mobile_langue,
+            "mobile_blog"        => $request->mobile_blog,
+            "mobile_gallerie"    => $request->mobile_gallerie,
+            "mobile_tchatbot"    => $request->mobile_tchatbot,
+            "mobile_tchat"       => $request->mobile_tchat,
+            "mobile_mail"        => $request->mobile_mail
+        );
+
+        $tel = array(
+            "tel_asterisk"      => $request->tel_asterisk,
+            "tel_serveur"       => $request->tel_serveur,
+            "tel_telephones"    => $request->tel_telephones,
+            "tel_switch"        => $request->tel_switch,
+            "tel_cablage"       => $request->tel_cablage,
+            "tel_accessoires"   => $request->tel_accessoires
+        );
+
+        $web = array(
+            "webapp_design"      => $request->webapp_design,
+            "webapp_form"        => $request->webapp_form,
+            "webapp_hebergement" => $request->webapp_hebergement,
+            "webapp_domaine"     => $request->webapp_domaine,
+            "webapp_seo"         => $request->webapp_seo,
+            "webapp_https"       => $request->webapp_https,
+
+            "webapp_auth"       => $request->webapp_auth,
+            "webapp_geoloc"     => $request->webapp_geoloc,
+            "webapp_langue"     => $request->webapp_langue,
+            "webapp_api"        => $request->webapp_api,
+            "webapp_blog"       => $request->webapp_blog,
+            "webapp_gallerie"   => $request->webapp_gallerie,
+            "webapp_tchatbot"   => $request->webapp_tchatbot,
+            "webapp_tchat"      => $request->webapp_tchat,
+            "webapp_mail"       => $request->webapp_mail
         );
 
         $body = array(
-            'landing' => $landing
+            'landing'   => $landing,
+            'erp'       => $erp,
+            'mobile'    => $mobile,
+            'tel'       => $tel,
+            'web'       => $web
         );
 
         $body = json_encode($body);
@@ -73,6 +132,9 @@ class InvoicesController extends Controller
 
         $devis = Devis::find($request->id);
         $devis->body = $body;
+        $devis->reference = $request->reference;
+        $devis->statut = $request->statut;
+        $devis->description = $request->description;
         $devis->save();
 
         return redirect()->back();
@@ -116,8 +178,11 @@ class InvoicesController extends Controller
     public function showPDF($id)
     {
         $devis = Devis::find($id);
+        $projet = Projet::find($devis->projet_id);
+        $client = Client::find($projet->client_id);
+        // dump($client);
         $hide = true;
-        return view('0 AdminLte3.pages.devis.pdf.devis1',compact('devis', 'hide'));
+        return view('0 AdminLte3.pages.devis.pdf.devis1',compact('devis', 'hide', 'client'));
     }
 
     public function initProjectCategorie(){

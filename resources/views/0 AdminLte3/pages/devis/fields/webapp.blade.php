@@ -44,7 +44,7 @@
         <tr>
             <th scope="row">{{ $key+1 }}</th>
             <td class="text-center">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ $content->name}}" name="{{ $content->name}}">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ json_encode($content)}}" name="{{ $content->name}}">
             </td>
             <td>{{ $content->fonction }}</td>
             <td>{{ $content->description }}</td>

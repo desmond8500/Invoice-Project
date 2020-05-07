@@ -31,7 +31,7 @@ class AdminlteController extends Controller
         $devis   = Devis::all()->count();
         $contacts = Contact::all()->count();
 
-        $resume[] = array( 'text'=> 'Clients', 'number'=> $clients, 'icon'=>'fa-user', 'color'=>'bg-info');
+        $resume[] = array( 'text'=> 'Clients', 'number'=> $clients, 'icon'=>'fa-user', 'color'=>'bg-info', 'route'=>'clients');
         $resume[] = array( 'text'=> 'Projets', 'number'=> $projets, 'icon'=>'fa-folder', 'color'=>'bg-info');
         $resume[] = array( 'text'=> 'Devis', 'number'=> $devis, 'icon'=> 'fa-file', 'color'=>'bg-info');
         $resume[] = array( 'text'=> 'Contacts', 'number'=> $contacts, 'icon'=>'fa-id-card', 'color'=>'bg-info');

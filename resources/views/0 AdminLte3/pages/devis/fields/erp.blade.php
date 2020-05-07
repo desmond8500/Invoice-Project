@@ -1,9 +1,9 @@
 @php
     $contents = json_decode('[
-        { "name": "erp_design",         "fonction": "Theme",            "prix": "1 000"},
-        { "name": "erp_form",           "fonction": "Formulaires",      "prix": "1 000"},
-        { "name": "erp_hebergement",    "fonction": "Hébergement",      "prix": "1 000"},
-        { "name": "erp_domaine",        "fonction": "Nom de domaine",   "prix": "1 000"}
+        { "status": "false", "name": "erp_design",         "fonction": "Theme",            "prix": "1 000"},
+        { "status": "false", "name": "erp_form",           "fonction": "Formulaires",      "prix": "1 000"},
+        { "status": "false", "name": "erp_hebergement",    "fonction": "Hébergement",      "prix": "1 000"},
+        { "status": "false", "name": "erp_domaine",        "fonction": "Nom de domaine",   "prix": "1 000"}
     ]');
 @endphp
 
@@ -27,7 +27,7 @@
         <tr>
             <th scope="row">{{ $key+1 }}</th>
             <td class="text-center">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ $content->name}}" name="{{ $content->name}}">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ json_encode($content)}}" name="{{ $content->name}}">
             </td>
             <td>{{ $content->fonction }}</td>
             <td>{{ $content->prix }} F CFA</td>
