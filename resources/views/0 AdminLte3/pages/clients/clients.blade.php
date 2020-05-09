@@ -12,6 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             @include('0 AdminLte3.pages.clients.add')
+
+            <a href="{{route('seeds.clients')}}" class="btn btn-danger">Générer un Client</a>
         </div>
         <div class="col-md-12">
             <table class="table bg-white sm mt-2">

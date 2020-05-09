@@ -128,6 +128,111 @@ class InvoicesController extends Controller
         return json_encode($body);
     }
 
+    public static function row($section=null){
+        $landing = json_decode('[
+            { "slug": "landing_design",      "domaine": "Informatique", "categorie":"Landing page", "name": "Theme",          "prix": "1000", "description": "Thème qui sera appliqué à la page"},
+            { "slug": "landing_form",        "domaine": "Informatique", "categorie":"Landing page", "name": "Formulaires",    "prix": "1000", "description": "Les formulaires de commentaire, de newletter etc"},
+            { "slug": "landing_hebergement", "domaine": "Informatique", "categorie":"Landing page", "name": "Hébergement",    "prix": "1000", "description": "Serveur en ligne"},
+            { "slug": "landing_domaine",     "domaine": "Informatique", "categorie":"Landing page", "name": "Nom de domaine", "prix": "1000", "description": "L\'adresse en ligne"},
+            { "slug": "landing_seo",         "domaine": "Informatique", "categorie":"Landing page", "name": "Référencement",  "prix": "1000", "description": "Permet mettre en avant la page sur internet"},
+            { "slug": "landing_https",       "domaine": "Informatique", "categorie":"Landing page", "name": "Sécutité",       "prix": "1000", "description": "L\'adresse en ligne"}
+        ]');
+
+        $web = json_decode('[
+            { "name": "webapp_design",       "fonction": "Theme",          "prix": "1000", "description": "Thème qui sera appliqué à la page"},
+            { "name": "webapp_form",         "fonction": "Formulaires",    "prix": "1000", "description": "Les formulaires de commentaire, de newletter etc"},
+            { "name": "webapp_hebergement",  "fonction": "Hébergement",    "prix": "1000", "description": "Serveur en ligne"},
+            { "name": "webapp_domaine",      "fonction": "Nom de domaine", "prix": "1000", "description": "L\'adresse en ligne"},
+            { "name": "webapp_seo",          "fonction": "Référencement",  "prix": "1000", "description": "Permet mettre en avant la page sur internet"},
+            { "name": "webapp_https",        "fonction": "Sécutité",       "prix": "1000", "description": "L\'adresse en ligne"},
+
+            { "name": "webapp_auth",       "fonction": "Authentification", "prix": "1000", "description": "Inscription,  connexion, mot de passe oublié, etc"},
+            { "name": "webapp_geoloc",     "fonction": "Géolocalisation",  "prix": "1000", "description": "Géolocalisation"},
+            { "name": "webapp_langue",     "fonction": "Langues",          "prix": "1000", "description": "Changer la langue de l\'application selon la localisation"},
+            { "name": "webapp_api",        "fonction": "API",              "prix": "1000", "description": "Apis"},
+            { "name": "webapp_blog",       "fonction": "Blog",             "prix": "1000", "description": "Interface de blogging lié à la page"},
+            { "name": "webapp_gallerie",   "fonction": "Gallerie",         "prix": "1000", "description": "Gallérie d\'images, de vidéos, etc"},
+            { "name": "webapp_tchatbot",   "fonction": "Tchatbot",         "prix": "1000", "description": "Tchat automatique"},
+            { "name": "webapp_tchat",      "fonction": "Tchat",            "prix": "1000", "description": "Tchat en ligne"},
+            { "name": "webapp_mail",       "fonction": "Mailing",          "prix": "1000", "description": "Envoi de mails"}
+        ]');
+
+        $mobile = json_decode('[
+            { "status": "false", "name": "mobile_design",       "fonction": "Theme",          "prix": "1000", "description": "Thème qui sera appliqué à la page"},
+            { "status": "false", "name": "mobile_form",         "fonction": "Formulaires",    "prix": "1000", "description": "Les formulaires de commentaire, de newletter etc"},
+            { "status": "false", "name": "mobile_hebergement",  "fonction": "Hébergement",    "prix": "1000", "description": "Serveur en ligne"},
+            { "status": "false", "name": "mobile_domaine",      "fonction": "Nom de domaine", "prix": "1000", "description": "L\'adresse en ligne"},
+            { "status": "false", "name": "mobile_seo",          "fonction": "Référencement",  "prix": "1000", "description": "Permet mettre en avant la page sur internet"},
+            { "status": "false", "name": "mobile_https",        "fonction": "Sécutité",       "prix": "1000", "description": "L\'adresse en ligne"},
+
+            { "status": "false", "name": "mobile_auth",       "fonction": "Authentification", "prix": "1000", "description": "Inscription,  connexion, mot de passe oublié, etc"},
+            { "status": "false", "name": "mobile_geoloc",     "fonction": "Géolocalisation",  "prix": "1000", "description": "Géolocalisation"},
+            { "status": "false", "name": "mobile_langue",     "fonction": "Langues",          "prix": "1000", "description": "Changer la langue de l\'application selon la localisation"},
+            { "status": "false", "name": "mobile_blog",       "fonction": "Blog",             "prix": "1000", "description": "Interface de blogging lié à la page"},
+            { "status": "false", "name": "mobile_gallerie",   "fonction": "Gallerie",         "prix": "1000", "description": "Gallérie d\'images, de vidéos, etc"},
+            { "status": "false", "name": "mobile_tchatbot",   "fonction": "Tchatbot",         "prix": "1000", "description": "Tchat automatique"},
+            { "status": "false", "name": "mobile_tchat",      "fonction": "Tchat",            "prix": "1000", "description": "Tchat en ligne"},
+            { "status": "false", "name": "mobile_mail",       "fonction": "Mailing",          "prix": "1000", "description": "Envoi de mails"}
+        ]');
+
+        $ecommerce = json_decode('[
+            { "status": "false", "name": "ecommerce_ecommerce",  "fonction": "Ecommerce de base",  "prix": "1000", "description": "Fonctionalités de base"}
+        ]');
+
+        $erp = json_decode('[
+            { "status": "false", "name": "erp_design",         "fonction": "Theme",            "prix": "1 000"},
+            { "status": "false", "name": "erp_form",           "fonction": "Formulaires",      "prix": "1 000"},
+            { "status": "false", "name": "erp_hebergement",    "fonction": "Hébergement",      "prix": "1 000"},
+            { "status": "false", "name": "erp_domaine",        "fonction": "Nom de domaine",   "prix": "1 000"}
+        ]');
+
+        $tel = json_decode('[
+            { "status": "false", "name": "tel_asterisk",   "fonction": "Asterisk",     "prix": "1000", "description": "Serveur de téléphonie IP"},
+            { "status": "false", "name": "tel_serveur",    "fonction": "Serveur",      "prix": "1000", "description": "PC physique"},
+            { "status": "false", "name": "tel_telephones", "fonction": "Téléphones IP","prix": "1000", "description": "Téléphones IP"},
+            { "status": "false", "name": "tel_switch",     "fonction": "Switchs",      "prix": "1000", "description": "Des switchs pour l\'interconnexion"},
+            { "status": "false", "name": "tel_cablage",    "fonction": "Cablage",      "prix": "1000", "description": "Cablage"},
+            { "status": "false", "name": "tel_accessoires","fonction": "Accessoires",  "prix": "1000", "description": "Accessoires"}
+        ]');
+
+        $body = array(
+            'landing'   => $landing,
+            'erp'       => $erp,
+            'mobile'    => $mobile,
+            'tel'       => $tel,
+            'web'       => $web
+        );
+
+        switch ($section) {
+            case 'value':
+                return $landing;
+                break;
+            case 'value':
+                return $web;
+                break;
+            case 'value':
+                return $mobile;
+                break;
+            case 'value':
+                return $ecommerce;
+                break;
+            case 'value':
+                return $erp;
+                break;
+            case 'value':
+                return $tel;
+                break;
+
+            default:
+                return $body;
+                break;
+        }
+
+
+
+
+    }
+
     public function initInput(){
         $contents = json_decode('[
             { "slug": "landing_design",      "domaine": "Informatique", "categorie":"Landing page", "name": "Theme",          "prix": "1000", "description": "Thème qui sera appliqué à la page"},

@@ -17,7 +17,9 @@
         <div class="col-md-12">
             @include('0 AdminLte3.pages.projets.add')
             @include('0 AdminLte3.pages.contacts.add')
+
             <a href="{{route('contacts.list',['client_id'=>$client->id])}}" class="btn btn-info">Contacts</a>
+            <a href="{{route('seeds.projets',['client_id'=>$client->id])}}" class="btn btn-danger">Générer un projet</a>
         </div>
         @endif
         <div class="col-md-12">

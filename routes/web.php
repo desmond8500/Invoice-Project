@@ -40,6 +40,12 @@ Route::post('/invoices/devis/edit', 'InvoicesController@devisEdit')->name('devis
 Route::get('/invoices/devis/pdf/{id}', 'InvoicesController@devisPDF')->name('devisPDF');
 Route::get('/invoices/devis/showPDF/{id}', 'InvoicesController@showPDF')->name('showPDF');
 
+// Seeds
+Route::get('/seeds/clients', 'SeedController@clients')->name('seeds.clients');
+Route::get('/seeds/projets/{client_id?}', 'SeedController@projets')->name('seeds.projets');
+Route::get('/seeds/devis/{projet_id?}', 'SeedController@devis')->name('seeds.devis');
+Route::get('/seeds/contacts/{client_id?}', 'SeedController@contacts')->name('seeds.contacts');
+
 
 // Infyom
 Auth::routes(['verify' => true]);
@@ -51,9 +57,6 @@ Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\Gene
 Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
 Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
 Route::post('generator_builder/generate-from-file','\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile')->name('io_generator_builder_generate_from_file');
-
-
-
 
 
 // Models

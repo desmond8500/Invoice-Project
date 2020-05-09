@@ -34,9 +34,7 @@
                             <a class="nav-link" id="telephonie-tab" data-toggle="tab" href="#telephonie" role="tab" aria-controls="telephonie" aria-selected="false">Téléphonie</a>
                         </li>
                     </ul>
-                    {{-- @php
-                        dump($devis);
-                    @endphp --}}
+
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="landing" role="tabpanel" aria-labelledby="landing-tab">
                             @include('0 AdminLte3.pages.devis.fields.landingpage')

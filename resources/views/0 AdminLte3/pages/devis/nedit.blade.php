@@ -54,10 +54,9 @@
                             </div>
                         @endforeach
                         </div> --}}
-                        {{-- @dump($devis)
                         <div class="col-md-12">
                             @include('0 AdminLte3.pages.devis.tab',['devis'=>$devis])
-                        </div> --}}
+                        </div>
 
                     </div>
                 </div>
